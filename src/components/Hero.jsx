@@ -133,7 +133,7 @@ const Hero = () => {
                     </motion.h4>
                     </div>
 
-                <div className="col-start-2 h-24 mt-[50%]">
+                <div className="col-start-2 h-24 justify-self-start self-end">
                 <motion.h4
                         ref={textRef5} 
                         transition={{
