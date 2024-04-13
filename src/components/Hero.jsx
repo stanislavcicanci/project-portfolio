@@ -64,44 +64,29 @@ const Hero = () => {
             </motion.h1>
           </div>
 
-          <div className="col-start-9 text-right text-2xl h-[6.3rem] col-span-3 flex items-end flex-col">
-
+          <div className="col-start-9 text-right h-[6.3rem] col-span-3 flex items-end flex-col md:text-[1.5vw] lg:text-[1vw]">
             <h4 className=''>
-              {Array.from('MOLDOVIAN DESIGNER creating').map((char, index) => (
-                <span key={index} className="char w-[1648px]">{char}</span>
-              ))}
-
+              MOLDOVIAN DESIGNER creating</h4>
+            <h4 className=''>
+            visual products and
             </h4>
             <h4 className=''>
-              {Array.from('visual products and').map((char, index) => (
-                <span key={index} className="char w-[1648px]">{char}</span>
-              ))}
-            </h4>
-            <h4 className=''>
-              {Array.from('experiences.').map((char, index) => (
-                <span key={index} className="char w-[1648px]">{char}</span>
-              ))}
+              experiences
             </h4>
           </div>
 
-          <div className="col-start-2 h-24 justify-self-start self-end">
-            <h4 className='col-start-2 text-left w-[24.6875rem] text-2xl'>
-              {Array.from('©2024').map((char, index) => (
-                <span key={index} className="char w-[1648px]">{char}</span>
-              ))}
+          <div className="col-start-2 col-span-3 justify-end h-24 flex flex-col  md:text-[1.5vw] lg:text-[1vw]">
+            <h4 className='col-start-2 text-left'>
+              ©2024
             </h4>
-            <h4 className=' text-left w-[24.6875rem] text-2xl'>
-              {Array.from('ROFFESIONAL CAREER -').map((char, index) => (
-                <span key={index} className="char w-[1648px]">{char}</span>
-              ))}
+            <h4 className=' text-left'>
+              ROFFESIONAL CAREER
             </h4>
-            <h4 className='col-start-2 text-left w-[24.6875rem] text-2xl'>
-              {Array.from('AGING LIKE FINE WINE').map((char, index) => (
-                <span key={index} className="char w-[1648px]">{char}</span>
-              ))}
+            <h4 className='col-start-2 text-left'>
+              AGING LIKE FINE WINE
             </h4>
           </div>
-          <div className="col-start-5 col-span-7 flex justify-end mt-0">
+          <div className="col-start-5 col-span-7 flex items-end justify-end mt-0">
             <motion.h1
               className='text-[10vw] flex uppercase'
               initial={{ y: 100, opacity: 0 }}
