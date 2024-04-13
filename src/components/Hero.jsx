@@ -67,7 +67,7 @@ const Hero = () => {
             <div className="content h-[886px] bg-[#121212] text-white">
                 <div className='grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw] pt-[15.375rem] '>
                     <div className="col-start-2">
-                        <motion.h1
+                        <h1
                             ref={textRef}
                             transition={{
                                 type: 'spring',
@@ -76,7 +76,7 @@ const Hero = () => {
                             }}
                             className='text-[10vw] flex'>
                             {Array.from('DIGITAL').map((char, index) => (
-                            <motion.div key={index} className="">
+                            <div key={index} className="">
                                 <span className="char">
                                     <motion.div
                                         initial={{ y: 100, opacity: 0 }}
@@ -90,10 +90,10 @@ const Hero = () => {
                                         {char}
                                     </motion.div>
                                 </span>
-                            </motion.div>
+                            </div>
 ))}
 
-                        </motion.h1>
+                        </h1>
                     </div>
                     <div className="col-start-9 text-right w-[24.6875rem] text-2xl h-[6.3rem]">
 
