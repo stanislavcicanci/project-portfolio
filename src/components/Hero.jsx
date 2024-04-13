@@ -1,8 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useGSAP } from "@gsap/react";
-// import SplitType from "https://cdn.skypack.dev/split-type";
-import gsap from "gsap";
+import gsap from 'gsap';
 
 const Hero = () => {
     const textRef = useRef(null);
@@ -19,8 +18,10 @@ const Hero = () => {
         const MIN_FONT_WEIGHT = 400;
 
         const onMouseMove = (event) => {
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
+            const containerElement = container.current;
+            if (!containerElement) return;
+            const mouseX = event.pageX - containerElement.offsetLeft;
+            const mouseY = event.pageY - containerElement.offsetTop;
 
             if (textRef.current && textRef2.current) {
                 const textItems = [
@@ -46,7 +47,8 @@ const Hero = () => {
                             Math.max(0, MAX_DISTANCE - distance))
                         : MIN_FONT_WEIGHT;
 
-                    gsap.to(textItem, { fontWeight, duration: 0.5, ease: "slow(0.7,0.7,false)" });
+                    // gsap.to(textItem, { fontWeight, duration: 0.2, ease: "slow(0.7,0.7,false)" });
+                    gsap.to(textItem, { fontWeight, duration: 0.2, ease: "power1.Out" });
                 });
             }
         };
@@ -60,8 +62,10 @@ const Hero = () => {
 
     return (
         <>
-            <div className="content h-[886px] bg-[#121212] text-white">
-                <div className='grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw] pt-[15.375rem] '>
+            <div
+            ref={container}
+            className=" content h-[886px] bg-[#121212] text-white flex  justify-center items-center">
+                <div className='grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]'>
                     <div className="col-start-2">
                         <h1
                             ref={textRef}
@@ -96,8 +100,9 @@ const Hero = () => {
                     <h4
                         className=''>
                         {Array.from('MOLDOVIAN DESIGNER creating').map((char, index) => (
-                            <span key={index} className="char w-[1648px]">{char}</span>
+                        <span key={index} className="char w-[1648px]">{char}</span>
                         ))}
+
                     </h4>
                     <h4
                         className=''>
@@ -133,36 +138,37 @@ const Hero = () => {
                         ))}
                     </h4>
                 </div>
-                    <div className="col-start-5 col-span-7 flex justify-end mt-0" >
-                        <h1
-                            ref={textRef2}
-                            transition={{
-                                type: 'spring',
-                                stiffness: 260,
-                                damping: 20,
-                                delay: 1
-                            }}
-                            className='text-[10vw] flex'>
-                            {Array.from('CREATOR').map((char, index) => (
-                                <div className="">
-                                <span key={index} className="char w-[1648px]">
-                                    <motion.div className=""
-                                    initial={{ y: 100, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    transition={{
-                                        ease: 'easeInOut',
-                                        duration: 0.5,
-                                         delay: index * 0.1,
-                                    }}
-                                    >
-                                    {char}
-                                    </motion.div>
-                                    </span>     
-                                    
-                                </div>
-                            ))}
-                        </h1>
-                    </div>
+                <div className="col-start-5 col-span-7 flex justify-end mt-0">
+    <h1
+        ref={textRef2}
+        transition={{
+            type: 'spring',
+            stiffness: 260,
+            damping: 20,
+            delay: 1
+        }}
+        className='text-[10vw] flex'>
+        {Array.from('CREATOR').map((char, index) => (
+            <div className="" key={`char_${index}`}> {/* Modified key prop here */}
+                <span key={`span_${index}`} className="char w-[1648px]"> {/* Modified key prop here */}
+                    <motion.div className=""
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{
+                        ease: 'easeInOut',
+                        duration: 0.5,
+                         delay: index * 0.1,
+                    }}
+                    >
+                    {char}
+                    </motion.div>
+                </span>     
+                
+            </div>
+        ))}
+    </h1>
+</div>
+
                 </div>
             </div>
 
