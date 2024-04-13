@@ -52,7 +52,7 @@ const Hero = () => {
         <div className='grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]'>
           <div className="col-start-2">
             <motion.h1
-              className='text-[10vw] flex uppercase'
+              className='text-[10.42vw] flex uppercase'
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
@@ -64,7 +64,7 @@ const Hero = () => {
             </motion.h1>
           </div>
 
-          <div className="col-start-9 text-right h-[6.3rem] col-span-3 flex items-end flex-col md:text-[1.5vw] lg:text-[1vw]">
+          <div className="col-start-9 text-right h-[6.3rem] col-span-3 flex items-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
             <h4 className=''>
               MOLDOVIAN DESIGNER creating</h4>
             <h4 className=''>
@@ -88,7 +88,7 @@ const Hero = () => {
           </div>
           <div className="col-start-5 col-span-7 flex items-end justify-end mt-0">
             <motion.h1
-              className='text-[10vw] flex uppercase'
+              className='text-[10.42vw] flex uppercase'
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{
