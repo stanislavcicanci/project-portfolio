@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useGSAP } from "@gsap/react";
-import gsap from 'gsap';
+import gsap from 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js';
 
 const Hero = () => {
     const textRef = useRef(null);
