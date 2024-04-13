@@ -40,7 +40,7 @@ const Hero = () => {
                             Math.max(0, MAX_DISTANCE - distance))
                         : MIN_FONT_WEIGHT;
 
-                    gsap.to(textItem, { fontWeight, duration: 0.5, ease: "power3.out" });
+                    gsap.to(textItem, { fontWeight, duration: 0.5, ease: "slow(0.7,0.7,false)" });
                 });
             }
         };
