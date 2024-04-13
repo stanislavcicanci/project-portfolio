@@ -2,12 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
 
-*{
-    font-family: "Syne", sans-serif;
+@font-face {
+    font-family: 'MyFont';
+    src: local('MyFont'), url("./font/syne.regular.ttf") format('truetype');
+    font-weight: 400;
 }
 
+@font-face {
+    font-family: 'Syne';
+    src: local('Syne'), url('./font/syne_medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Syne';
+    src: local('Syne'), url('./font/syne_bold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Syne';
+    src: local('Syne'), url('./font/syne_semiBold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Syne';
+    src: local('Syne'), url('./font/syne_extraBold.ttf') format('truetype');
+    font-weight: 800;
+}
+
+*{
+    font-family: 'MyFont';
+}
 
 h1{
     color: #F1F1F1;
