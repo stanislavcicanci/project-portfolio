@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
 
 const Hero = () => {
     const textRef = useRef(null);
     const textRef2 = useRef(null);
+    gsap.registerPlugin(useGSAP);
     useEffect(() => {
         const MAX_DISTANCE = 300;
         const MAX_FONT_WEIGHT = 800;
