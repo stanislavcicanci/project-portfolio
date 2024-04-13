@@ -38,9 +38,9 @@ const Hero = () => {
           const normalizedDistance = distance / 500
 
           let weight = 800 - 400 * Easing(normalizedDistance)
-          weight = Math.max(400, Math.min(weight, 800))
+          weight = Math.max(400, Math.min(weight, 700))
 
-          span.style.fontWeight = `${weight}`
+          span.style.fontVariationSettings = `'wght' ${weight}`
         })
       })
     });

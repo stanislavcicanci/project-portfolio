@@ -5,33 +5,10 @@
 
 @font-face {
     font-family: 'MyFont';
-    src: local('MyFont'), url("./font/syne.regular.ttf") format('truetype');
+    src: local('MyFont'), url("./font/syne.ttf") format('truetype');
     font-weight: 400;
 }
 
-@font-face {
-    font-family: 'Syne';
-    src: local('Syne'), url('./font/syne_medium.ttf') format('truetype');
-    font-weight: 500;
-}
-
-@font-face {
-    font-family: 'Syne';
-    src: local('Syne'), url('./font/syne_bold.ttf') format('truetype');
-    font-weight: 600;
-}
-
-@font-face {
-    font-family: 'Syne';
-    src: local('Syne'), url('./font/syne_semiBold.ttf') format('truetype');
-    font-weight: 700;
-}
-
-@font-face {
-    font-family: 'Syne';
-    src: local('Syne'), url('./font/syne_extraBold.ttf') format('truetype');
-    font-weight: 800;
-}
 
 *{
     font-family: 'MyFont';
@@ -41,8 +18,8 @@ h1{
     color: #F1F1F1;
     font-size: 200px;
     font-style: normal;
-    font-weight: 400;
     line-height: 70%;
+    font-variation-settings: 'wght' 400;
 }
 
 h4{
