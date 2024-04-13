@@ -1,12 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useGSAP } from "@gsap/react";
-import gsap from 'gsap';
+// import SplitType from "https://cdn.skypack.dev/split-type";
+import gsap from "gsap";
 
 const Hero = () => {
     const textRef = useRef(null);
     const textRef2 = useRef(null);
-    gsap.registerPlugin(useGSAP);
+    const container = useRef();
+
+    useGSAP(() => {
+        gsap.to(".char", { fontWeight: 400 });
+    }, { scope: container });
+
     useEffect(() => {
         const MAX_DISTANCE = 300;
         const MAX_FONT_WEIGHT = 800;
@@ -19,7 +25,7 @@ const Hero = () => {
             if (textRef.current && textRef2.current) {
                 const textItems = [
                     ...textRef.current.querySelectorAll('.char'),
-                    ...textRef2.current.querySelectorAll('.char'),  
+                    ...textRef2.current.querySelectorAll('.char'),
                 ];
 
                 textItems.forEach((textItem) => {
