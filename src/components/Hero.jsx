@@ -20,7 +20,7 @@ const Hero = () => {
             const mouseX = event.clientX;
             const mouseY = event.clientY;
 
-            if (textRef.current && textRef2.current) {
+            if (textRef.current && textRef2.current && textRef3.current && textRef4.current && textRef5.current && textRef6.current && textRef7.current && textRef8.current) {
                 const textItems = [
                     ...textRef.current.querySelectorAll('.char'),
                     ...textRef2.current.querySelectorAll('.char'),
@@ -50,7 +50,7 @@ const Hero = () => {
                             Math.max(0, MAX_DISTANCE - distance))
                         : MIN_FONT_WEIGHT;
 
-                    gsap.to(textItem, { fontWeight, duration: 0.5, easing: 'power3.out' });
+                    gsap.to(textItem, { fontWeight, duration: 0.5, ease: "power3.out" });
                 });
             }
         };
@@ -76,21 +76,23 @@ const Hero = () => {
                             }}
                             className='text-[10vw] flex'>
                             {Array.from('DIGITAL').map((char, index) => (
-                            <motion.div className=""
-                            >
-                                <span  key={index} className="char"
-                        
-                                > <motion.div className=""
-                                initial={{ y: 100, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{
-                                    ease: 'easeInOut',
-                                    duration: 0.5,
-                                    delay: index * 0.1,
-                                }}
-                                >{char}</motion.div></span>
+                            <motion.div key={index} className="">
+                                <span className="char">
+                                    <motion.div
+                                        initial={{ y: 100, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        transition={{
+                                            ease: 'easeInOut',
+                                            duration: 0.5,
+                                            delay: index * 0.1,
+                                        }}
+                                    >
+                                        {char}
+                                    </motion.div>
+                                </span>
                             </motion.div>
-                            ))}
+))}
+
                         </motion.h1>
                     </div>
                     <div className="col-start-9 text-right w-[24.6875rem] text-2xl h-[6.3rem]">
