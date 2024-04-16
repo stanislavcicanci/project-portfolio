@@ -35,7 +35,7 @@ const Hero = () => {
 
           const distance = Math.sqrt(diffX * diffX + diffY * diffY)
 
-          const normalizedDistance = distance / 500
+          const normalizedDistance = distance / 300
 
           let weight = 800 - 400 * Easing(normalizedDistance)
           weight = Math.max(400, Math.min(weight, 700))
