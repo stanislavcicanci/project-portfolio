@@ -13,7 +13,7 @@ function App() {
   const smoothOption = {
     damping: 20,
     stiffness: 150,
-    mass: 1
+    mass: 0.6
   }
 
   const smoothMouse = {
