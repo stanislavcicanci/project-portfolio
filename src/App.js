@@ -12,7 +12,7 @@ function App() {
   }
   const smoothOption = {
     damping: 20,
-    stiffness: 100,
+    stiffness: 150,
     mass: 1
   }
 
