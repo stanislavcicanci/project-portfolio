@@ -75,7 +75,7 @@ const Hero = () => {
             </h4>
           </div>
 
-          <div className="col-start-2 col-span-3 flex justify-end flex-col md:text-[1.5vw] lg:text-[1vw]">
+          <div className="col-start-2 col-span-3 flex justify-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
             <h4 className='col-start-2 text-left'>
               ©2024
             </h4>
