@@ -40,7 +40,7 @@ const HomeContent = () => {
           const normalizedDistance = distance / 300
 
           let weight = 800 - 400 * Easing(normalizedDistance)
-          weight = Math.max(400, Math.min(weight, 700))
+          weight = Math.max(400, Math.min(weight, 600))
 
           span.style.fontVariationSettings = `'wght' ${weight}`
         })
