@@ -64,7 +64,7 @@ const Hero = () => {
             </motion.h1>
           </div>
 
-          <div className="col-start-9 text-right h-[6.3rem] col-span-3 flex items-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
+          <div className="text_homeh4 col-start-9 text-right h-[6.3rem] col-span-3 flex items-end flex-col md:text-[1.5vw] lg:text-[1.25vw] text-white !important">
             <h4 className=''>
               MOLDOVIAN DESIGNER creating</h4>
             <h4 className=''>
@@ -75,7 +75,7 @@ const Hero = () => {
             </h4>
           </div>
 
-          <div className="col-start-2 col-span-3 flex justify-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
+          <div className="text_homeh4 col-start-2 col-span-3 flex justify-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
             <h4 className='col-start-2 text-left'>
               ©2024
             </h4>

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import HomeContent from './components/HomeContent';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 function App() {
 
@@ -59,6 +60,7 @@ function App() {
       ></motion.div>
       <Navbar />
       <Hero />
+      <HomeContent />
     </>
   );
 }
