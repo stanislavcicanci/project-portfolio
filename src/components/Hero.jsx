@@ -48,7 +48,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="content h-[886px] bg-[#121212] text-white flex justify-center items-center">
+      <div className="content h-[80vh] bg-[#121212] text-white flex justify-center items-center">
         <div className='grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]'>
           <div className="col-start-2">
             <motion.h1
