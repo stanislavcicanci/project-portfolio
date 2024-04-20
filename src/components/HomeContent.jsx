@@ -77,18 +77,16 @@ const HomeContent = () => {
             </motion.h2>
             <div className="row-start-1 row-span-3 col-start-5 col-span-8 mb-[6rem]">
               <div className="iamgine_aniamtie w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center " style={{ backgroundImage: `url(${work001})` }}>
-              {/* <img
-              className='w-full h-full object-cover'
-              src="" alt="" /> */}
+
               </div>
                 <h4 className='w-auto text-left mb-[.5rem]'>ViZBL | Get to know your friends</h4>
               <div className="tag flex justify-start w-[55.78vw]">
               <p className='ml-0'>#web design</p> <p>#ui/ux</p> <p>#3d motion</p> <p>#branding</p> <p>#creative direction</p>
               </div>
             </div>
-            <div className="col-start-1 col-span-4 row-start-4 flex ">
+            <div className="col-start-1 col-span-4 row-start-4 row-span-1 flex ">
               <div className="text-left">
-              <div className="w-[32.625rem] h-[48rem] mb-4" style={{ backgroundImage: `url(${work002})` }}>
+              <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center" style={{ backgroundImage: `url(${work002})` }}>
 
             </div>
                 <h4 className='text-left mb-2'>SOLIX Moldova</h4>
@@ -100,7 +98,7 @@ const HomeContent = () => {
             </div>
             <div className="col-start-5 col-span-4 row-start-4 flex ">
               <div className="text-left">
-                <div className="w-[32.625rem] h-[48rem] mb-4" style={{ backgroundImage: `url(${work003})` }}>
+              <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center" style={{ backgroundImage: `url(${work003})` }}>
 
                 </div>
                 <h4 className='text-left mb-2'>ALUTRADE</h4>
@@ -111,8 +109,10 @@ const HomeContent = () => {
               </div>
             </div>
             <div className="row-start-4 col-start-10 col-span-3 flex items-end justify-end">
-            <GoPlus className='mb-1 size-9 font-normal mr-3' />
+            <div className="flex justify-center align-center items-center">
+            <GoPlus className=' size-9 font-normal mr-3' />
               <h3>MORE WORK</h3>
+            </div>
             </div>
 
       </div>
