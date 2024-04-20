@@ -79,8 +79,8 @@ const HomeContent = () => {
               <div className="iamgine_aniamtie w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center " style={{ backgroundImage: `url(${work001})` }}>
 
               </div>
-                <h4 className='w-auto text-left mb-[.5rem]'>ViZBL | Get to know your friends</h4>
-              <div className="tag flex justify-start w-[55.78vw]">
+                <h4 className='w-auto text-left mb-[.5rem] font-medium'>ViZBL | Get to know your friends</h4>
+              <div className="tag flex justify-start w-[55.78vw] font-medium">
               <p className='ml-0'>#web design</p> <p>#ui/ux</p> <p>#3d motion</p> <p>#branding</p> <p>#creative direction</p>
               </div>
             </div>
