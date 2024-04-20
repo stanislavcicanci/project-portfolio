@@ -64,7 +64,7 @@ const Hero = () => {
             </motion.h1>
           </div>
 
-          <div className="text_homeh4 col-start-9 text-right h-[6.3rem] col-span-3 flex items-end flex-col md:text-[1.5vw] lg:text-[1.25vw] text-white !important uppercase">
+          <div className="text_homeh4 col-start-8 text-right h-[6.3rem] col-span-4 flex items-end flex-col md:text-[1.5vw] lg:text-[1.25vw] text-white !important uppercase">
             <h4 className=''>
               MOLDOVIAN DESIGNER creating</h4>
             <h4 className=''>
