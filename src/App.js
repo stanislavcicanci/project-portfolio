@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HomeContent from './components/HomeContent';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-
+import SmoothScroll from './components/SmoothScroll';
 function App() {
 
   const cursorSize = 20;
@@ -35,10 +35,14 @@ function App() {
     return () => {
       window.removeEventListener('mousemove', manageMouseMove);
     }
-  }, [])
+  }, )
+  
 
   return (
     <>
+    <SmoothScroll>    
+
+      <div >
       <motion.div
         className='style.cursor left-[smoothMouse.x] top-[smoothMouse.y] fixed w-3 h-3 bg-[#F74264] rounded-full'
         style={{
@@ -61,8 +65,11 @@ function App() {
       <Navbar />
       <Hero />
       <HomeContent />
+      </div>
+      </SmoothScroll>
     </>
   );
 }
 
 export default App;
+
