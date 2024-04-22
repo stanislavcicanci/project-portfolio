@@ -1,16 +1,67 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { work001, work002, work003 } from '../index';
-import { GoPlus } from "react-icons/go";
+import { AiOutlinePlus } from "react-icons/ai";
 
 const Easing = (x) => {
-  let clampX = Math.max(0, Math.min(x, 1))
-  return Math.sin((clampX * Math.PI) / 2)
-}
+  let clampX = Math.max(0, Math.min(x, 1));
+  return Math.sin((clampX * Math.PI) / 2);
+};
 
 const HomeContent = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [work002InView, setWork002InView] = useState(false);
+  const [work003InView, setWork003InView] = useState(false);
+  const work002Ref = useRef(null);
+  const work003Ref = useRef(null);
   const imageRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleIntersection = (entries) => {
+      entries.forEach(entry => {
+        if (entry.target === work002Ref.current) {
+          setWork002InView(entry.isIntersecting);
+        } else if (entry.target === work003Ref.current) {
+          setWork003InView(entry.isIntersecting);
+        }
+      });
+    };
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.01,
+      duration: 0.5,
+    };
+
+    const observerWork002 = new IntersectionObserver(handleIntersection, observerOptions);
+    const observerWork003 = new IntersectionObserver(handleIntersection, observerOptions);
+
+    if (work002Ref.current) {
+      observerWork002.observe(work002Ref.current);
+    }
+
+    if (work003Ref.current) {
+      observerWork003.observe(work003Ref.current);
+    }
+
+    return () => {
+      observerWork002.disconnect();
+      observerWork003.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const headings = document.querySelectorAll('h2');
@@ -18,58 +69,52 @@ const HomeContent = () => {
       heading.innerHTML = heading.textContent
         .split('')
         .map((letter) => {
-          return `<span>${letter}</span>`
+          return `<span>${letter}</span>`;
         })
-        .join('')
+        .join('');
 
-      const spans = heading.querySelectorAll('span')
+      const spans = heading.querySelectorAll('span');
 
       document.addEventListener('mousemove', (event) => {
 
-        const mouseX = event.clientX
-        const mouseY = event.clientY
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
 
         spans.forEach((span) => {
-          const bounds = span.getBoundingClientRect()
-          const spanX = bounds.left + bounds.width / 2
-          const spanY = bounds.top + bounds.height / 2
+          const bounds = span.getBoundingClientRect();
+          const spanX = bounds.left + bounds.width / 2;
+          const spanY = bounds.top + bounds.height / 2;
 
-          const diffX = mouseX - spanX
-          const diffY = mouseY - spanY
+          const diffX = mouseX - spanX;
+          const diffY = mouseY - spanY;
 
-          const distance = Math.sqrt(diffX * diffX + diffY * diffY)
+          const distance = Math.sqrt(diffX * diffX + diffY * diffY);
 
-          const normalizedDistance = distance / 300
+          const normalizedDistance = distance / 300;
 
-          let weight = 800 - 400 * Easing(normalizedDistance)
-          weight = Math.max(400, Math.min(weight, 600))
+          let weight = 800 - 400 * Easing(normalizedDistance);
+          weight = Math.max(400, Math.min(weight, 600));
 
-          span.style.fontVariationSettings = `'wght' ${weight}`
-        })
-      })
-    });
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    const handleIntersection = (entries) => {
-      entries.forEach(entry => {
-        // setImageInView(entry.isIntersecting); // 
+          span.style.fontVariationSettings = `'wght' ${weight}`;
+        });
       });
-    };
-
-    const observer = new IntersectionObserver(handleIntersection);
-    observer.observe(imageRef.current);
-
-    window.addEventListener('scroll', handleScroll);
-
-
-    const currentImageRef = imageRef.current;
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      observer.unobserve(currentImageRef);
-    };
+    });
   }, []);
+
+
+  // Plus animatia 
+  const controls = useAnimation();
+
+  React.useEffect(() => {
+    const verifyScroll = () => {
+      const scrollY = window.scrollY;
+      controls.start({ rotate: scrollY * 0.1 });
+    };
+  
+    window.addEventListener("scroll", verifyScroll);
+    return () => window.removeEventListener("scroll", verifyScroll);
+  }, [controls]);
+  
 
   return (
     <div>
@@ -103,8 +148,8 @@ const HomeContent = () => {
             className="iamgine_aniamtie w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
               backgroundImage: `url(${work001})`,
-              backgroundPositionY: `calc(35% - ${scrollY * 0.06}px)`,
-              backgroundSize: '120%', 
+              backgroundPositionY: `calc(32% - ${scrollY * 0.06}px)`,
+              backgroundSize: '120%',
             }}
             ref={imageRef}
           ></div>
@@ -115,17 +160,16 @@ const HomeContent = () => {
         </div>
         <div className="col-start-1 col-span-4 row-start-4 row-span-1 flex ">
           <div className="text-left">
-            <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center" 
-            style={{
-              backgroundImage: `url(${work002})`,
-              backgroundPositionY: `calc(50% - ${scrollY * 0.05}px)`, 
-              backgroundSize: '100%',
-            }}
-            >
-
-            </div>
+            <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
+              style={{
+                backgroundImage: `url(${work002})`,
+                backgroundPositionY: work002InView ? `calc(100% - ${scrollY * 0.025}px)` : '100%',
+                backgroundSize: 'auto 100%',
+                backgroundPositionX: 'center',
+              }}
+              ref={work002Ref}
+            ></div>
             <h4 className='text-left mb-2'>SOLIX Moldova</h4>
-
             <div className="flex">
               <p className='ml-0'>#web design</p> <p>#branding</p>
             </div>
@@ -133,17 +177,16 @@ const HomeContent = () => {
         </div>
         <div className="col-start-5 col-span-4 row-start-4 flex ">
           <div className="text-left">
-            <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center" 
+            <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work003})`,
-                backgroundPositionY: `calc(50% - ${scrollY * 0.05}px)`, 
-                backgroundSize: '100%',
+                backgroundPositionY: work003InView ? `calc(100% - ${scrollY * 0.025}px)` : '100%',
+                backgroundSize: 'auto 110%',
+                backgroundPositionX: 'center',
               }}
-            >
-
-            </div>
+              ref={work003Ref}
+            ></div>
             <h4 className='text-left mb-2'>ALUTRADE</h4>
-
             <div className="flex">
               <p className='ml-0'>#web design</p> <p>#ui/ux</p> <p>#branding</p>
             </div>
@@ -151,14 +194,17 @@ const HomeContent = () => {
         </div>
         <div className="row-start-4 col-start-10 col-span-3 flex items-end justify-end">
           <div className="flex justify-center align-center items-center">
-            <GoPlus className=' size-[43px] font-bold mr-3 ' />
-            <h3>MORE WORK</h3>
+        <motion.div className=""
+          animate={controls}
+        >
+        <AiOutlinePlus className=' size-[37px] font-bold' />
+        </motion.div>
+            <h3 className='ml-3'>MORE WORK</h3>
           </div>
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default HomeContent;
