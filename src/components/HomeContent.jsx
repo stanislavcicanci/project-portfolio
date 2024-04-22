@@ -103,7 +103,7 @@ const HomeContent = () => {
             className="iamgine_aniamtie w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
               backgroundImage: `url(${work001})`,
-              backgroundPositionY: `calc(1% - ${scrollY * 0.06}px)`,
+              backgroundPositionY: `calc(30% - ${scrollY * 0.06}px)`,
               backgroundSize: '120%', 
             }}
             ref={imageRef}
@@ -151,7 +151,7 @@ const HomeContent = () => {
         </div>
         <div className="row-start-4 col-start-10 col-span-3 flex items-end justify-end">
           <div className="flex justify-center align-center items-center">
-            <GoPlus className=' size-9 font-normal mr-3' />
+            <GoPlus className=' size-[43px] font-bold mr-3 ' />
             <h3>MORE WORK</h3>
           </div>
         </div>

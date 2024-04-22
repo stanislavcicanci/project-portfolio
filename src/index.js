@@ -5,9 +5,10 @@ import App from './App';
 import work001 from './images/work001.svg';
 import work002 from './images/work002.svg';
 import work003 from './images/work003.svg';
+import plus from './images/plus.svg';
 
 
-export { work001, work002, work003 };
+export { work001, work002, work003, plus };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
