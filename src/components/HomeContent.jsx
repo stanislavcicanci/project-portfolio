@@ -108,7 +108,7 @@ const HomeContent = () => {
   React.useEffect(() => {
     const verifyScroll = () => {
       const scrollY = window.scrollY;
-      controls.start({ rotate: scrollY * 0.1 });
+      controls.start({ rotate: scrollY * 0.5 });
     };
   
     window.addEventListener("scroll", verifyScroll);
