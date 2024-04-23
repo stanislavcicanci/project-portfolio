@@ -8,7 +8,7 @@ const Easing = (x) => {
 
 const Hero = () => {
   const [allowHover, setAllowHover] = useState(false);
-  const [showOverflow, setShowOverflow] = useState(false); // Initial, overflow-ul este ascuns
+  const [showOverflow, setShowOverflow] = useState(false);
 
   useEffect(() => {
     const headings = document.querySelectorAll('h1');
@@ -59,13 +59,12 @@ const Hero = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAllowHover(true);
-      // După 2 secunde, setează starea pentru a afișa overflow-ul
       setTimeout(() => {
         setShowOverflow(true);
       }, 0);
-    }, 900); // Activează hover-ul după 5 secunde
+    }, 900);
 
-    return () => clearTimeout(timer); // Curăță timerul la demontare
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -119,7 +118,7 @@ const Hero = () => {
               transition={{
                 ease: 'easeInOut',
                 duration: 0.5,
-                delay: 0.5,
+                delay: 0.3,
               }}
             >
               Creator
