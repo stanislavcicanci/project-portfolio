@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Easing = (x) => {
@@ -7,9 +7,12 @@ const Easing = (x) => {
 }
 
 const Hero = () => {
+  const [allowHover, setAllowHover] = useState(false);
+  const [showOverflow, setShowOverflow] = useState(false); // Initial, overflow-ul este ascuns
 
   useEffect(() => {
     const headings = document.querySelectorAll('h1');
+
     headings.forEach((heading) => {
       heading.innerHTML = heading.textContent
         .split('')
@@ -20,30 +23,49 @@ const Hero = () => {
 
       const spans = heading.querySelectorAll('span')
 
-      document.addEventListener('mousemove', (event) => {
+      const handleMouseMove = (event) => {
+        if (allowHover) {
+          const mouseX = event.clientX
+          const mouseY = event.clientY
 
-        const mouseX = event.clientX
-        const mouseY = event.clientY
+          spans.forEach((span) => {
+            const bounds = span.getBoundingClientRect()
+            const spanX = bounds.left + bounds.width / 2
+            const spanY = bounds.top + bounds.height / 2
 
-        spans.forEach((span) => {
-          const bounds = span.getBoundingClientRect()
-          const spanX = bounds.left + bounds.width / 2
-          const spanY = bounds.top + bounds.height / 2
+            const diffX = mouseX - spanX
+            const diffY = mouseY - spanY
 
-          const diffX = mouseX - spanX
-          const diffY = mouseY - spanY
+            const distance = Math.sqrt(diffX * diffX + diffY * diffY)
 
-          const distance = Math.sqrt(diffX * diffX + diffY * diffY)
+            const normalizedDistance = distance / 500
 
-          const normalizedDistance = distance / 500
+            let weight = 800 - 400 * Easing(normalizedDistance)
+            weight = Math.max(400, Math.min(weight, 600))
 
-          let weight = 800 - 400 * Easing(normalizedDistance)
-          weight = Math.max(400, Math.min(weight, 600))
+            span.style.fontVariationSettings = `'wght' ${weight}`
+          })
+        }
+      };
 
-          span.style.fontVariationSettings = `'wght' ${weight}`
-        })
-      })
+      document.addEventListener('mousemove', handleMouseMove);
+
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove);
+      };
     });
+  }, [allowHover]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAllowHover(true);
+      // După 2 secunde, setează starea pentru a afișa overflow-ul
+      setTimeout(() => {
+        setShowOverflow(true);
+      }, 2000);
+    }, 2500); // Activează hover-ul după 5 secunde
+
+    return () => clearTimeout(timer); // Curăță timerul la demontare
   }, []);
 
   return (
@@ -51,6 +73,7 @@ const Hero = () => {
       <div className="content h-[80vh] bg-[#121212] text-white flex justify-center items-center">
         <div className='grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]'>
           <div className="col-start-2">
+          <div className={`over ${showOverflow ? '' : 'overflow-hidden'} w-[100vw]`}>
             <motion.h1
               className='text-[10.42vw] flex uppercase'
               initial={{ y: 100, opacity: 0 }}
@@ -62,6 +85,7 @@ const Hero = () => {
             >
               Digital
             </motion.h1>
+            </div>
           </div>
 
           <div className="text_homeh4 col-start-8 text-right h-[6.3rem] col-span-4 flex items-end flex-col md:text-[1.5vw] lg:text-[1.25vw] text-white !important uppercase">
@@ -87,6 +111,7 @@ const Hero = () => {
             </h4>
           </div>
           <div className="col-start-5 col-span-7 flex items-end justify-end mt-0">
+          <div className={`over ${showOverflow ? '' : 'overflow-hidden'} w-[100vw]`}>
             <motion.h1
               className='text-[10.42vw] flex uppercase'
               initial={{ y: 100, opacity: 0 }}
@@ -99,6 +124,7 @@ const Hero = () => {
             >
               Creator
             </motion.h1>
+            </div>
           </div>
         </div>
       </div>
