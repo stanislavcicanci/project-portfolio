@@ -111,7 +111,7 @@ const Hero = () => {
             </h4>
           </div>
           <div className="col-start-5 col-span-7 flex items-end justify-end mt-0">
-          <div className={`over ${showOverflow ? '' : 'overflow-hidden'} w-[100vw]`}>
+          <div className={`over ${showOverflow ? '' : 'overflow-hidden'} w-[100vw] flex items-end justify-end`}>
             <motion.h1
               className='text-[10.42vw] flex uppercase'
               initial={{ y: 100, opacity: 0 }}
