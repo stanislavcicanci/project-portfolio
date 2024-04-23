@@ -62,7 +62,7 @@ const Hero = () => {
       // După 2 secunde, setează starea pentru a afișa overflow-ul
       setTimeout(() => {
         setShowOverflow(true);
-      }, 1000);
+      }, 300);
     }, 900); // Activează hover-ul după 5 secunde
 
     return () => clearTimeout(timer); // Curăță timerul la demontare
