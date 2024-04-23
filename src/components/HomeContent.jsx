@@ -148,8 +148,10 @@ const HomeContent = () => {
             className="iamgine_aniamtie w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
               backgroundImage: `url(${work001})`,
-              backgroundPositionY: `calc(32% - ${scrollY * 0.06}px)`,
+              backgroundPositionY: `calc(20% - ${Math.min(0.5 * imageRef.current.clientHeight, scrollY * 0.045)}px)`,
               backgroundSize: '120%',
+              backgroundPositionX: 'center',
+              backgroundRepeat: 'no-repeat',
             }}
             ref={imageRef}
           ></div>
