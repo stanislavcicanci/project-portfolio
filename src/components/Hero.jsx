@@ -48,10 +48,49 @@ const Hero = () => {
         }
       };
 
+      const handleScroll = () => {
+        if (allowHover) {
+          const windowWidth = window.innerWidth;
+          const windowHeight = window.innerHeight;
+          const scrollX = window.scrollX;
+          const scrollY = window.scrollY;
+      
+          spans.forEach((span) => {
+            const bounds = span.getBoundingClientRect();
+            const spanX = bounds.left + bounds.width / 2 - scrollX;
+            const spanY = bounds.top + bounds.height / 2 - scrollY;
+      
+            const normalizedX = windowWidth / 2;
+            const normalizedY = windowHeight / 2;
+      
+            const diffX = normalizedX - spanX;
+            const diffY = normalizedY - spanY;
+      
+            const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+      
+            // Verificăm dacă cursorul se află pe text
+            if (distance <= 1) {
+              // Menținem greutatea textului neschimbată
+            } else {
+              // Dacă cursorul nu se află pe text, readucem textul la valoarea sa inițială
+              const currentWeight = parseInt(span.style.fontVariationSettings.split(' ')[1]);
+              const initialWeight = 400;
+              const newWeight = currentWeight + (initialWeight - currentWeight) * 0.1; // Ajustează factorul de interpolare după preferințe
+      
+              span.style.fontVariationSettings = `'wght' ${newWeight.toFixed(2)}`;
+            }
+          });
+        }
+      };
+      
+
+
       document.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('scroll', handleScroll);
 
       return () => {
         document.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('scroll', handleScroll);
       };
     });
   }, [allowHover]);
