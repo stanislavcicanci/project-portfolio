@@ -10,14 +10,23 @@
 }
 
 
+::selection {
+    background-color: rgb(217, 102, 122);
+    color: white;
+}
+
+::-moz-selection {
+    background-color: rgb(217, 102, 122); 
+    color: white;
+}
 
 
 *{
     font-family: 'MyFont';
-    -webkit-user-select: none;
+    /* -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
+    user-select: none; */
 }
 
 h1{
