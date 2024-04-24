@@ -47,6 +47,7 @@ const Hero = () => {
           })
         }
       };
+      const initialFontWeight = 400;
 
       const handleScroll = () => {
         if (allowHover) {
@@ -72,17 +73,12 @@ const Hero = () => {
             if (distance <= 1) {
               // Menținem greutatea textului neschimbată
             } else {
-              // Dacă cursorul nu se află pe text, readucem textul la valoarea sa inițială
-              const currentWeight = parseInt(span.style.fontVariationSettings.split(' ')[1]);
-              const initialWeight = 400;
-              const newWeight = currentWeight + (initialWeight - currentWeight) * 0.1; // Ajustează factorul de interpolare după preferințe
-      
-              span.style.fontVariationSettings = `'wght' ${newWeight.toFixed(2)}`;
+              // Utilizăm valoarea inițială a greutății fontului
+              span.style.fontVariationSettings = `'wght' ${initialFontWeight}`;
             }
           });
         }
       };
-      
 
 
       document.addEventListener('mousemove', handleMouseMove);
