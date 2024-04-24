@@ -5,6 +5,7 @@ import HomeContent from './components/HomeContent';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import SmoothScroll from './components/SmoothScroll';
 import Section3home from './components/Section3home';
+import Footer from './components/Footer';
 function App() {
 
   const cursorSize = 20;
@@ -67,6 +68,7 @@ function App() {
       <Hero />
       <HomeContent />
       <Section3home />
+      <Footer />
       </div>
       </SmoothScroll>
     </>
