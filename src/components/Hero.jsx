@@ -16,7 +16,7 @@ const Hero = () => {
     const handleMouseMove = (event) => {
       if (allowHover) {
         const mouseX = event.clientX;
-        const mouseY = event.clientY;
+        const mouseY = event.clientY + window.pageYOffset; // Adaugă offset-ul de scroll la coordonata Y a cursorului
 
         headings.forEach((heading) => {
           const spans = heading.querySelectorAll('span');
@@ -42,9 +42,12 @@ const Hero = () => {
       }
     };
 
-    const handleScroll = (event) => {
+    const handleScroll = () => {
       if (allowHover) {
-        handleMouseMove({ clientX: event.clientX, clientY: event.clientY });
+        const mouseX = window.innerWidth / 2; // Coordonata X a cursorului va fi centrul ferestrei
+        const mouseY = window.innerHeight / 2 + window.pageYOffset; // Coordonata Y a cursorului va fi centrul ferestrei plus offset-ul de scroll
+
+        handleMouseMove({ clientX: mouseX, clientY: mouseY });
       }
     };
 
