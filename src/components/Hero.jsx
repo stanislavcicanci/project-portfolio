@@ -38,7 +38,7 @@ const Hero = () => {
 
             const distance = Math.sqrt(diffX * diffX + diffY * diffY)
 
-            const normalizedDistance = distance / 500
+            const normalizedDistance = distance / 500;
 
             let weight = 800 - 400 * Easing(normalizedDistance)
             weight = Math.max(400, Math.min(weight, 600))
@@ -69,11 +69,11 @@ const Hero = () => {
       
             const distance = Math.sqrt(diffX * diffX + diffY * diffY);
       
-            // Verificăm dacă cursorul se află pe text
+            
             if (distance <= 1) {
-              // Menținem greutatea textului neschimbată
+              
             } else {
-              // Utilizăm valoarea inițială a greutății fontului
+              
               span.style.fontVariationSettings = `'wght' ${initialFontWeight}`;
             }
           });
