@@ -110,7 +110,7 @@ const Footer = () => {
     return (
         <div ref={sectionRef1}>
             <div className="grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]">
-                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-7 mt-[9.5rem]`}>
+                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-7 mt-[6rem]`}>
                     <motion.div
                         initial={{ y: 100, opacity: 0 }} 
                         animate={isVisible ? { y: 0, opacity: 1 } : {}}
