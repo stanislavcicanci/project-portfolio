@@ -71,7 +71,7 @@ const Hero = () => {
       
             
             if (distance <= 1) {
-              
+                span.style.fontVariationSettings = `'wght' ${initialFontWeight}`;
             } else {
               
               span.style.fontVariationSettings = `'wght' ${initialFontWeight}`;
