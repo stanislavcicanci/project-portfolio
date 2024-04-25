@@ -13,82 +13,48 @@ const Hero = () => {
   useEffect(() => {
     const headings = document.querySelectorAll('h1');
 
-    headings.forEach((heading) => {
-      heading.innerHTML = heading.textContent
-        .split('')
-        .map((letter) => {
-          return `<span>${letter}</span>`
-        })
-        .join('')
+    const handleMouseMove = (event) => {
+      if (allowHover) {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
 
-      const spans = heading.querySelectorAll('span')
-
-      const handleMouseMove = (event) => {
-        if (allowHover) {
-          const mouseX = event.clientX
-          const mouseY = event.clientY
+        headings.forEach((heading) => {
+          const spans = heading.querySelectorAll('span');
 
           spans.forEach((span) => {
-            const bounds = span.getBoundingClientRect()
-            const spanX = bounds.left + bounds.width / 2
-            const spanY = bounds.top + bounds.height / 2
+            const bounds = span.getBoundingClientRect();
+            const spanX = bounds.left + bounds.width / 2;
+            const spanY = bounds.top + bounds.height / 2;
 
-            const diffX = mouseX - spanX
-            const diffY = mouseY - spanY
+            const diffX = mouseX - spanX;
+            const diffY = mouseY - spanY;
 
-            const distance = Math.sqrt(diffX * diffX + diffY * diffY)
+            const distance = Math.sqrt(diffX * diffX + diffY * diffY);
 
             const normalizedDistance = distance / 500;
 
-            let weight = 800 - 400 * Easing(normalizedDistance)
-            weight = Math.max(400, Math.min(weight, 600))
+            let weight = 800 - 400 * Easing(normalizedDistance);
+            weight = Math.max(400, Math.min(weight, 600));
 
-            span.style.fontVariationSettings = `'wght' ${weight}`
-          })
-        }
-      };
-      const initialFontWeight = 400;
-
-      const handleScroll = () => {
-        if (allowHover) {
-          const windowWidth = window.innerWidth;
-          const windowHeight = window.innerHeight;
-          const scrollX = window.scrollX;
-          const scrollY = window.scrollY;
-      
-          spans.forEach((span) => {
-            const bounds = span.getBoundingClientRect();
-            const spanX = bounds.left + bounds.width / 2 - scrollX;
-            const spanY = bounds.top + bounds.height / 2 - scrollY;
-      
-            const normalizedX = windowWidth / 2;
-            const normalizedY = windowHeight / 2;
-      
-            const diffX = normalizedX - spanX;
-            const diffY = normalizedY - spanY;
-      
-            const distance = Math.sqrt(diffX * diffX + diffY * diffY);
-      
-            
-            if (distance <= 1) {
-                span.style.fontVariationSettings = `'wght' ${initialFontWeight}`;
-            } else {
-              
-              span.style.fontVariationSettings = `'wght' ${initialFontWeight}`;
-            }
+            span.style.fontVariationSettings = `'wght' ${weight}`;
           });
-        }
-      };
+        });
+      }
+    };
 
+    const handleScroll = (event) => {
+      if (allowHover) {
+        handleMouseMove({ clientX: event.clientX, clientY: event.clientY });
+      }
+    };
 
-      document.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('scroll', handleScroll);
+    document.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('scroll', handleScroll);
 
-      return () => {
-        document.removeEventListener('mousemove', handleMouseMove);
-        window.removeEventListener('scroll', handleScroll);
-      };
-    });
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [allowHover]);
 
   useEffect(() => {
