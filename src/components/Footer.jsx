@@ -139,7 +139,7 @@ const Footer = () => {
             <div className="flex justify-around mb-[2.5rem]">
                 <p className='text-neutral-900 '> LINKEDIN</p>
                 <p className='text-neutral-900 '> BEHANCE</p>
-                <p className='text-neutral-900 '> INSTAGRA</p>
+                <p className='text-neutral-900 '> INSTAGRAM</p>
                 <p className='text-neutral-900 '> FACEBOOK</p>
                 <p className='text-neutral-900 '> TELEGRAM</p>
             </div>
