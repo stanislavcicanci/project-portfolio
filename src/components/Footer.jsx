@@ -122,7 +122,7 @@ const Footer = () => {
                         <h1 className='text-[10.42vw] text-neutral-900 leading-[110%] flex uppercase'>CĂTĂLIN</h1>
                     </motion.div>
                 </div>
-                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-8 row-start-2 mb-[6rem]`}>
+                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-8 row-start-2 mb-[4rem]`}>
                     <motion.div
                         initial={{ y: 100, opacity: 0 }} 
                         animate={isVisible ? { y: 0, opacity: 1 } : {}}
