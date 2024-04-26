@@ -122,7 +122,7 @@ const Footer = () => {
                         <h1 className='text-[10.42vw] text-neutral-900 leading-[110%] flex uppercase'>CĂTĂLIN</h1>
                     </motion.div>
                 </div>
-                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-8 row-start-2 mb-[4rem]`}>
+                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-8 row-start-2 mb-[6rem]`}>
                     <motion.div
                         initial={{ y: 100, opacity: 0 }} 
                         animate={isVisible ? { y: 0, opacity: 1 } : {}}
@@ -139,7 +139,7 @@ const Footer = () => {
             <div className="flex justify-around mb-[2.5rem]">
                 <p className='text-neutral-900 '> LINKEDIN</p>
                 <p className='text-neutral-900 '> BEHANCE</p>
-                <p className='text-neutral-900 '> INSTAGRAM</p>
+                <p className='text-neutral-900 '> INSTAGRA</p>
                 <p className='text-neutral-900 '> FACEBOOK</p>
                 <p className='text-neutral-900 '> TELEGRAM</p>
             </div>
