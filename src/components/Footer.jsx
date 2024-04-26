@@ -1,66 +1,81 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-const Footer = () => {
-    const [allowHoverFooter, setAllowHoverFooter] = useState(false);
+const Easing = (x) => {
+    let clampX = Math.max(0, Math.min(x, 1));
+    return Math.sin((clampX * Math.PI) / 2);
+};
 
-    const EasingFooter = (x) => {
-        let clampX = Math.max(0, Math.min(x, 1))
-        return Math.sin((clampX * Math.PI) / 2)
-    }
+const Footer = () => {
+    const [allowHover, setAllowHover] = useState(false);
+    const [showOverflow, setShowOverflow] = useState(false);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
-        const headings = document.querySelectorAll('h1');
 
-        headings.forEach((heading) => {
-            heading.innerHTML = heading.textContent
-                .split('')
-                .map((letter) => {
-                    return `<span>${letter}</span>`
-                })
-                .join('')
+    const handleScroll = () => {
+        if (allowHover) {
+        const position = window.scrollY;
+        setScrollPosition(position);
+        }
+    };
 
-            const spans = heading.querySelectorAll('span')
+    const handleMouseMove = (event) => {
+        if (allowHover) {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        setMousePosition({ x: mouseX, y: mouseY });
+        }
+    };
 
-            const handleMouseMove = (event) => {
-                if (allowHoverFooter) {
-                    const mouseX = event.clientX
-                    const mouseY = event.clientY
+    window.addEventListener('scroll', handleScroll);
+    document.addEventListener('mousemove', handleMouseMove);
 
-                    spans.forEach((span) => {
-                        const bounds = span.getBoundingClientRect()
-                        const spanX = bounds.left + bounds.width / 2
-                        const spanY = bounds.top + bounds.height / 2
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+        document.removeEventListener('mousemove', handleMouseMove);
+    };
+    }, [allowHover]);
 
-                        const diffX = mouseX - spanX
-                        const diffY = mouseY - spanY
+    useEffect(() => {
+    const headings = document.querySelectorAll('h1');
 
-                        const distance = Math.sqrt(diffX * diffX + diffY * diffY)
+    headings.forEach((heading) => {
+        heading.innerHTML = heading.textContent
+        .split('')
+        .map((letter) => {
+            return `<span>${letter}</span>`;
+        })
+        .join('');
 
-                        const normalizedDistance = distance / 500
+        const spans = heading.querySelectorAll('span');
 
-                        let weight = 800 - 400 * EasingFooter(normalizedDistance)
-                        weight = Math.max(400, Math.min(weight, 600))
+        spans.forEach((span) => {
+        const bounds = span.getBoundingClientRect();
+        const spanX = bounds.left + bounds.width / 2;
+        const spanY = bounds.top + bounds.height / 2;
 
-                        span.style.fontVariationSettings = `'wght' ${weight}`
-                    })
-                }
-            };
-            
-            document.addEventListener('mousemove', handleMouseMove);
-
-            return () => {
-                document.removeEventListener('mousemove', handleMouseMove);
-            };
+        const diffX = Math.abs(mousePosition.x - spanX);
+        const diffY = Math.abs(mousePosition.y - spanY);
+          const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+        const normalizedDistance = distance / 500; 
+          let weight = 800 - 400 * Easing(normalizedDistance);
+        weight = Math.max(400, Math.min(weight, 600));
+        span.style.fontVariationSettings = `'wght' ${weight}`;
         });
-    }, [allowHoverFooter]);
+    });
+    }, [scrollPosition, mousePosition]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setAllowHoverFooter(true);
-        }, 900);
+        setAllowHover(true);
+        setTimeout(() => {
+        setShowOverflow(true);
+        }, 0);
+    }, 900);
 
-        return () => clearTimeout(timer);
+    return () => clearTimeout(timer);
     }, []);
 
     const [isVisible, setIsVisible] = useState(false);
@@ -71,7 +86,7 @@ const Footer = () => {
         const options = {
             root: null,
             rootMargin: "0px",
-            threshold: 0.3 
+            threshold: 0.1
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -116,20 +131,20 @@ const Footer = () => {
                         animate={isVisible ? { y: 0, opacity: 1 } : {}}
                         transition={{
                             ease: 'easeInOut',
-                            duration: 0.5,
+                            duration: isVisible ? 0.5 : 0.01,
                         }}
                     >
                         <h1 className='text-[10.42vw] text-neutral-900 leading-[110%] flex uppercase'>CĂTĂLIN</h1>
                     </motion.div>
                 </div>
-                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-8 row-start-2 mb-[6rem]`}>
+                <div className={`over ${isVisible && showOverflow ? '' : 'overflow-hidden'} col-start-2 col-span-8 row-start-2 mb-[6rem]`}>
                     <motion.div
                         initial={{ y: 100, opacity: 0 }} 
                         animate={isVisible ? { y: 0, opacity: 1 } : {}}
                         transition={{
                             ease: 'easeInOut',
                             duration: 0.5,
-                            delay: 0.5
+                            delay: isVisible ? 0.5 : 0.01
                         }}
                     >
                         <h1 className='text-[10.42vw] text-neutral-900 flex uppercase'>ȚURCANU</h1>

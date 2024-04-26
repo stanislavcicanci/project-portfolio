@@ -9,24 +9,85 @@ const Easing = (x) => {
 };
 
 const HomeContent = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const [allowHover, setAllowHover] = useState(false);
+  const [showOverflow, setShowOverflow] = useState(false);
+  const [scrollY] = useState(0);
   const [work002InView, setWork002InView] = useState(false);
   const [work003InView, setWork003InView] = useState(false);
   const work002Ref = useRef(null);
   const work003Ref = useRef(null);
   const imageRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
+
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (allowHover) {
+      const position = window.scrollY;
+      setScrollPosition(position);
+      }
+    };
+
+    const handleMouseMove = (event) => {
+      if (allowHover) {
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+      setMousePosition({ x: mouseX, y: mouseY });
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    document.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousemove', handleMouseMove);
     };
+  }, [allowHover]);
+
+  useEffect(() => {
+    const headings = document.querySelectorAll('h2');
+
+    headings.forEach((heading) => {
+      heading.innerHTML = heading.textContent
+        .split('')
+        .map((letter) => {
+          return `<span>${letter}</span>`;
+        })
+        .join('');
+
+      const spans = heading.querySelectorAll('span');
+
+      spans.forEach((span) => {
+        const bounds = span.getBoundingClientRect();
+        const spanX = bounds.left + bounds.width / 2;
+        const spanY = bounds.top + bounds.height / 2;
+
+        const diffX = Math.abs(mousePosition.x - spanX);
+        const diffY = Math.abs(mousePosition.y - spanY);
+        const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+        const normalizedDistance = distance / 200;
+
+        let weight = 800 - 400 * Easing(normalizedDistance);
+        weight = Math.max(400, Math.min(weight, 600));
+
+        span.style.fontVariationSettings = `'wght' ${weight}`;
+      });
+    });
+  }, [scrollPosition, mousePosition]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAllowHover(true);
+      setTimeout(() => {
+        setShowOverflow(true);
+      }, 0);
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, []);
+
 
   useEffect(() => {
     const handleIntersection = (entries) => {
@@ -63,44 +124,6 @@ const HomeContent = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const headings = document.querySelectorAll('h2');
-    headings.forEach((heading) => {
-      heading.innerHTML = heading.textContent
-        .split('')
-        .map((letter) => {
-          return `<span>${letter}</span>`;
-        })
-        .join('');
-
-      const spans = heading.querySelectorAll('span');
-
-      document.addEventListener('mousemove', (event) => {
-
-        const mouseX = event.clientX;
-        const mouseY = event.clientY;
-
-        spans.forEach((span) => {
-          const bounds = span.getBoundingClientRect();
-          const spanX = bounds.left + bounds.width / 2;
-          const spanY = bounds.top + bounds.height / 2;
-
-          const diffX = mouseX - spanX;
-          const diffY = mouseY - spanY;
-
-          const distance = Math.sqrt(diffX * diffX + diffY * diffY);
-
-          const normalizedDistance = distance / 300;
-
-          let weight = 800 - 400 * Easing(normalizedDistance);
-          weight = Math.max(400, Math.min(weight, 600));
-
-          span.style.fontVariationSettings = `'wght' ${weight}`;
-        });
-      });
-    });
-  }, []);
-
 
   // Plus animatia 
   const controls = useAnimation();
@@ -119,8 +142,9 @@ const HomeContent = () => {
   return (
     <div>
       <div className='grid grid-cols-12 grid-rows-auto-fill gap-6 mx-[7vw] mt-12 mb-36'>
+        <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 row-start-1 col-span-4`}>
         <motion.h2
-          className='text-[5.66vw] flex uppercase col-start-1 row-start-1 col-span-4'
+          className='text-[5.66vw] flex uppercase'
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
@@ -131,8 +155,11 @@ const HomeContent = () => {
         >
           Creator
         </motion.h2>
-        <motion.h2
-          className='text-[5.66vw] flex uppercase col-start-1 row-start-2 h-14 col-span-8'
+        </div>
+        <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 row-start-2 col-span-8`}
+        >
+          <motion.h2
+          className='text-[5.66vw] flex uppercase'
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
@@ -143,6 +170,7 @@ const HomeContent = () => {
         >
           Work
         </motion.h2>
+        </div>
         <div className="row-start-1 row-span-3 col-start-5 col-span-8 mb-[6rem]">
           <div
             className="iamgine_aniamtie w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"

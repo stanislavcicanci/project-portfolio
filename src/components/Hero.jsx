@@ -84,8 +84,8 @@ const Hero = () => {
     <>
       <div className="content h-[80vh] bg-[#121212] text-white flex justify-center items-center">
         <div className="grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]">
-          <div className="col-start-2">
-            <div className={`over ${showOverflow ? '' : 'overflow-hidden'} w-[100vw]`}>
+          <div className="col-start-2 col-span-6">
+            <div className={`over ${showOverflow ? '' : 'overflow-hidden'}`}>
               <motion.h1
                 className="text-[10.42vw] flex uppercase"
                 initial={{ y: 100, opacity: 0 }}
