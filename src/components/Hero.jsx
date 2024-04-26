@@ -7,7 +7,7 @@ const Easing = (x) => {
 };
 
 const Hero = () => {
-  const [, setAllowHover] = useState(false);
+  const [allowHover, setAllowHover] = useState(false);
   const [showOverflow, setShowOverflow] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -15,14 +15,18 @@ const Hero = () => {
   useEffect(() => {
 
     const handleScroll = () => {
+      if (allowHover) {
       const position = window.scrollY;
       setScrollPosition(position);
+      }
     };
 
     const handleMouseMove = (event) => {
+      if (allowHover) {
       const mouseX = event.clientX;
       const mouseY = event.clientY;
       setMousePosition({ x: mouseX, y: mouseY });
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -32,7 +36,7 @@ const Hero = () => {
       window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mousemove', handleMouseMove);
     };
-  }, []);
+  }, [allowHover]);
 
   useEffect(() => {
     const headings = document.querySelectorAll('h1');
@@ -122,7 +126,7 @@ const Hero = () => {
                 transition={{
                   ease: 'easeInOut',
                   duration: 0.5,
-                  delay: 0.3,
+                  delay: 0.1,
                 }}
               >
                 Creator
