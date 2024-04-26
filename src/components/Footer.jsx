@@ -150,11 +150,23 @@ const Footer = () => {
                         <h1 className='text-[10.42vw] text-neutral-900 flex uppercase'>ȚURCANU</h1>
                     </motion.div>
                 </div>
+                <div className="col-start-9 col-span-3 row-start-1 text-neutral-900 mt-[6rem] flex flex-col gap-y-[1.5rem]">
+                    <div className="">
+                        <h4>
+                        Got a project in mind?
+                        </h4>
+                        <h4>
+                        Let’s make it reality
+                        </h4>
+                    </div>
+                    <h4>turkanu@studiomodvis.com</h4>
+                    <h4>Groningen, NL - 12:04:24</h4>
+                </div>
             </div>
             <div className="flex justify-around mb-[2.5rem]">
                 <p className='text-neutral-900 '> LINKEDIN</p>
                 <p className='text-neutral-900 '> BEHANCE</p>
-                <p className='text-neutral-900 '> INSTAGRA</p>
+                <p className='text-neutral-900 '> INSTAGRAM</p>
                 <p className='text-neutral-900 '> FACEBOOK</p>
                 <p className='text-neutral-900 '> TELEGRAM</p>
             </div>
