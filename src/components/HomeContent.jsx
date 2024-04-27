@@ -140,8 +140,8 @@ const HomeContent = () => {
   
 
   return (
-    <div>
-      <div className='grid grid-cols-12 grid-rows-auto-fill gap-6 mx-[7vw] mt-12 mb-36'>
+    <div className='bg-white'>
+      <div className='grid grid-cols-12 grid-rows-auto-fill gap-6 mx-[7vw] pt-12 pb-36'>
         <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 row-start-1 col-span-4`}>
         <motion.h2
           className='text-[5.66vw] flex uppercase'
