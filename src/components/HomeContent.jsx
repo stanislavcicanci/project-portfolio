@@ -11,29 +11,30 @@ const Easing = (x) => {
 const HomeContent = () => {
   const [allowHover, setAllowHover] = useState(false);
   const [showOverflow, setShowOverflow] = useState(false);
-  const [scrollY] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [work002InView, setWork002InView] = useState(false);
   const [work003InView, setWork003InView] = useState(false);
   const work002Ref = useRef(null);
   const work003Ref = useRef(null);
   const imageRef = useRef(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const controls1 = useAnimation();
+  const controls2 = useAnimation();
+  const controls3 = useAnimation();
 
   useEffect(() => {
-
     const handleScroll = () => {
       if (allowHover) {
-      const position = window.scrollY;
-      setScrollPosition(position);
+        const position = window.scrollY;
+        setScrollY(position);
       }
     };
 
     const handleMouseMove = (event) => {
       if (allowHover) {
-      const mouseX = event.clientX;
-      const mouseY = event.clientY;
-      setMousePosition({ x: mouseX, y: mouseY });
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        setMousePosition({ x: mouseX, y: mouseY });
       }
     };
 
@@ -75,7 +76,7 @@ const HomeContent = () => {
         span.style.fontVariationSettings = `'wght' ${weight}`;
       });
     });
-  }, [scrollPosition, mousePosition]);
+  }, [scrollY, mousePosition]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -88,14 +89,50 @@ const HomeContent = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const verifyScroll = () => {
+      const newScrollY = window.scrollY;
+      setScrollY(newScrollY);
+      controls1.start({ rotate: newScrollY * 0.5 });
+      if (imageRef.current) {
+        const imageHeight = imageRef.current.clientHeight;
+        const maxScroll = imageHeight * 0.2; // Limit to 20% of image height
+        const adjustedScroll = Math.min(maxScroll, newScrollY * 0.125);
+        const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
+        imageRef.current.style.backgroundPositionY = backgroundPosition;
+
+        if (newScrollY >= imageHeight) {
+          controls1.start({
+            rotate: 0,
+            transition: {
+              duration: 1,
+            }
+          });
+        }
+      }
+    };
+
+    window.addEventListener("scroll", verifyScroll);
+    return () => window.removeEventListener("scroll", verifyScroll);
+  }, [controls1]);
 
   useEffect(() => {
     const handleIntersection = (entries) => {
       entries.forEach(entry => {
         if (entry.target === work002Ref.current) {
           setWork002InView(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            controls2.start({
+              // Define animations for image 2 here
+            });
+          }
         } else if (entry.target === work003Ref.current) {
           setWork003InView(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            controls3.start({
+              // Define animations for image 3 here
+            });
+          }
         }
       });
     };
@@ -122,61 +159,53 @@ const HomeContent = () => {
       observerWork002.disconnect();
       observerWork003.disconnect();
     };
-  }, []);
+  }, [controls2, controls3]);
 
-
-  // Plus animatia 
-  const controls = useAnimation();
-
-  React.useEffect(() => {
-    const verifyScroll = () => {
-      const scrollY = window.scrollY;
-      controls.start({ rotate: scrollY * 0.5 });
-    };
-  
-    window.addEventListener("scroll", verifyScroll);
-    return () => window.removeEventListener("scroll", verifyScroll);
-  }, [controls]);
-  
+  const calculateBackgroundPosition = (scrollPosition, inView) => {
+    if (inView) {
+      const maxScroll = imageRef.current.clientHeight * 0.2; // Limit to 20% of image height
+      const adjustedScroll = Math.min(maxScroll, scrollPosition * 0.025);
+      return `calc(100% - ${adjustedScroll}px)`;
+    }
+    return '100%';
+  };
 
   return (
     <div className='bg-white'>
       <div className='grid grid-cols-12 grid-rows-auto-fill gap-6 mx-[7vw] pt-12 pb-36'>
         <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 row-start-1 col-span-4`}>
-        <motion.h2
-          className='text-[5.66vw] flex uppercase'
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            ease: 'easeInOut',
-            duration: 0.5,
-            delay: 0.5,
-          }}
-        >
-          Creator
-        </motion.h2>
-        </div>
-        <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 row-start-2 col-span-8`}
-        >
           <motion.h2
-          className='text-[5.66vw] flex uppercase'
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            ease: 'easeInOut',
-            duration: 0.5,
-            delay: 0.6,
-          }}
-        >
-          Work
-        </motion.h2>
+            className='text-[5.66vw] flex uppercase'
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.5,
+              delay: 0.5,
+            }}
+          >
+            Creator
+          </motion.h2>
+        </div>
+        <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 row-start-2 col-span-8`}>
+          <motion.h2
+            className='text-[5.66vw] flex uppercase'
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.5,
+              delay: 0.6,
+            }}
+          >
+            Work
+          </motion.h2>
         </div>
         <div className="row-start-1 row-span-3 col-start-5 col-span-8 mb-[6rem]">
           <div
-            className="iamgine_aniamtie w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
+            className="image_animation w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
               backgroundImage: `url(${work001})`,
-              backgroundPositionY: `calc(20% - ${Math.min(0.5 * 2, scrollY * 0.045)}px)`,
               backgroundSize: '120%',
               backgroundPositionX: 'center',
               backgroundRepeat: 'no-repeat',
@@ -193,7 +222,7 @@ const HomeContent = () => {
             <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work002})`,
-                backgroundPositionY: work002InView ? `calc(100% - ${scrollY * 0.025}px)` : '100%',
+                backgroundPositionY: calculateBackgroundPosition(scrollY, work002InView),
                 backgroundSize: 'auto 100%',
                 backgroundPositionX: 'center',
               }}
@@ -210,7 +239,7 @@ const HomeContent = () => {
             <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work003})`,
-                backgroundPositionY: work003InView ? `calc(100% - ${scrollY * 0.025}px)` : '100%',
+                backgroundPositionY: calculateBackgroundPosition(scrollY, work003InView),
                 backgroundSize: 'auto 110%',
                 backgroundPositionX: 'center',
               }}
@@ -224,11 +253,11 @@ const HomeContent = () => {
         </div>
         <div className="row-start-4 col-start-10 col-span-3 flex items-end justify-end">
           <div className="flex justify-center align-center items-center">
-        <motion.div className=""
-          animate={controls}
-        >
-        <AiOutlinePlus className=' size-[37px] font-bold' />
-        </motion.div>
+            <motion.div
+              animate={controls1}
+            >
+              <AiOutlinePlus className=' size-[37px] font-bold' />
+            </motion.div>
             <h3 className='ml-3'>MORE WORK</h3>
           </div>
         </div>
