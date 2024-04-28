@@ -170,6 +170,20 @@ const HomeContent = () => {
     return '100%';
   };
 
+  // Plus animatia 
+  const controls = useAnimation();
+
+  React.useEffect(() => {
+    const verifyScroll = () => {
+      const scrollY = window.scrollY;
+      controls.start({ rotate: scrollY * 0.5 });
+    };
+  
+    window.addEventListener("scroll", verifyScroll);
+    return () => window.removeEventListener("scroll", verifyScroll);
+  }, [controls]);
+
+
   return (
     <div className='bg-white'>
       <div className='grid grid-cols-12 grid-rows-auto-fill gap-6 mx-[7vw] pt-12 pb-36'>
@@ -254,7 +268,7 @@ const HomeContent = () => {
         <div className="row-start-4 col-start-10 col-span-3 flex items-end justify-end">
           <div className="flex justify-center align-center items-center">
             <motion.div
-              animate={controls1}
+              animate={controls}
             >
               <AiOutlinePlus className=' size-[37px] font-bold' />
             </motion.div>
