@@ -82,7 +82,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="content h-[91.5vh] bg-[#121212] text-white flex justify-center items-center">
+      <div className="content h-[91.5vh] relative bg-[#121212] text-white flex flex-col justify-center items-center">
         <div className="grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]">
           <div className="col-start-2 col-span-6">
             <div className={`over ${showOverflow ? '' : 'overflow-hidden'}`}>
@@ -134,6 +134,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        <div className='scroll absolute ' ></div>
       </div>
     </>
   );
