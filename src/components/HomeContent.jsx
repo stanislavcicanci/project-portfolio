@@ -184,7 +184,7 @@ const HomeContent = () => {
               delay: 0.5,
             }}
           >
-            Creator
+            Recent
           </motion.h2>
         </div>
         <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 row-start-2 col-span-8`}>
