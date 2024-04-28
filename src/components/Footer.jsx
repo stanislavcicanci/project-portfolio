@@ -163,7 +163,7 @@ const Footer = () => {
                     <h4>Groningen, NL - 12:04:24</h4>
                 </div>
             </div>
-            <div className="flex justify-around mb-[2.5rem]">
+            <div className="flex justify-around mb-[2.5rem] leading-[18px] text-lg font-medium">
                 <p className='text-neutral-900 '> LINKEDIN</p>
                 <p className='text-neutral-900 '> BEHANCE</p>
                 <p className='text-neutral-900 '> INSTAGRAM</p>
