@@ -122,6 +122,22 @@ const Footer = () => {
         }
     }, [isVisible, isOverflowing]);
 
+    //Ceas
+    const [time, setTime] = useState(new Date());
+
+    useEffect(() => {
+    const interval = setInterval(() => {
+        setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+    }, []);
+
+    const formattedTime = (date) => {
+    return date.toLocaleTimeString('en-US', { timeZone: 'Europe/Amsterdam', hour12: false });
+      // Здесь 'Europe/Amsterdam' - это временная зона для Гронингена, Нидерланды.
+      // Вы можете заменить 'Europe/Amsterdam' на нужный вам часовой пояс.
+    };
     return (
         <div ref={sectionRef1}>
             <div className="grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]">
@@ -160,7 +176,7 @@ const Footer = () => {
                         </h4>
                     </div>
                     <h4>turkanu@studiomodvis.com</h4>
-                    <h4>Groningen, NL - 12:04:24</h4>
+                    <h4>Groningen, NL - {formattedTime(time)}</h4>
                 </div>
             </div>
             <div className="flex justify-around mb-[2.5rem] leading-[18px] text-lg font-medium">
