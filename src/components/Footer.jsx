@@ -12,40 +12,40 @@ const Footer = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-    useEffect(() => {
+useEffect(() => {
 
     const handleScroll = () => {
-        if (allowHover) {
-        const position = window.scrollY;
-        setScrollPosition(position);
-        }
+    if (allowHover) {
+    const position = window.scrollY;
+    setScrollPosition(position);
+    }
     };
 
     const handleMouseMove = (event) => {
-        if (allowHover) {
-        const mouseX = event.clientX;
-        const mouseY = event.clientY;
-        setMousePosition({ x: mouseX, y: mouseY });
-        }
+    if (allowHover) {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    setMousePosition({ x: mouseX, y: mouseY });
+    }
     };
 
     window.addEventListener('scroll', handleScroll);
     document.addEventListener('mousemove', handleMouseMove);
 
     return () => {
-        window.removeEventListener('scroll', handleScroll);
-        document.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('scroll', handleScroll);
+    document.removeEventListener('mousemove', handleMouseMove);
     };
-    }, [allowHover]);
+}, [allowHover]);
 
-    useEffect(() => {
+useEffect(() => {
     const headings = document.querySelectorAll('h1');
 
     headings.forEach((heading) => {
         heading.innerHTML = heading.textContent
         .split('')
         .map((letter) => {
-            return `<span>${letter}</span>`;
+        return `<span>${letter}</span>`;
         })
         .join('');
 
@@ -58,25 +58,27 @@ const Footer = () => {
 
         const diffX = Math.abs(mousePosition.x - spanX);
         const diffY = Math.abs(mousePosition.y - spanY);
-          const distance = Math.sqrt(diffX * diffX + diffY * diffY);
-        const normalizedDistance = distance / 500; 
-          let weight = 800 - 400 * Easing(normalizedDistance);
-        weight = Math.max(400, Math.min(weight, 600));
-        span.style.fontVariationSettings = `'wght' ${weight}`;
-        });
-    });
-    }, [scrollPosition, mousePosition]);
+        const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+        const normalizedDistance = distance / 500;
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-        setAllowHover(true);
-        setTimeout(() => {
+        let weight = 800 - 400 * Easing(normalizedDistance);
+        weight = Math.max(400, Math.min(weight, 600));
+
+        span.style.fontVariationSettings = `'wght' ${weight}`;
+    });
+    });
+}, [scrollPosition, mousePosition]);
+
+useEffect(() => {
+    const timer = setTimeout(() => {
+    setAllowHover(true);
+    setTimeout(() => {
         setShowOverflow(true);
-        }, 0);
+    }, 0);
     }, 900);
 
     return () => clearTimeout(timer);
-    }, []);
+}, []);
 
     const [isVisible, setIsVisible] = useState(false);
     const [isOverflowing, setIsOverflowing] = useState(false);
@@ -160,7 +162,7 @@ const Footer = () => {
                         transition={{
                             ease: 'easeInOut',
                             duration: 0.5,
-                            delay: isVisible ? 0.5 : 0.01
+                            delay: isVisible ? 0.1  : 0.01
                         }}
                     >
                         <h1 className='text-[10.42vw] text-neutral-900 flex uppercase'>ȚURCANU</h1>
