@@ -227,7 +227,7 @@ const HomeContent = () => {
             ref={imageRef}
           ></div>
           <h4 className='w-auto text-left mb-[.5rem] font-medium'>ViZBL | Get to know your friends</h4>
-          <div className="tag flex justify-start w-[55.78vw] font-medium">
+          <div className="tag flex justify-start w-[55.78vw] font-medium flex-wrap">
             <p className='ml-0'>#web design</p> <p>#ui/ux</p> <p>#3d motion</p> <p>#branding</p> <p>#creative direction</p>
           </div>
         </div>

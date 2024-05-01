@@ -35,7 +35,7 @@ return (
         </div>
         </nav>
         <hr
-        className="absolute w-[99vw] h-[1px] text-zinc-100 top-[90px] opacity-50 z-[999]"
+        className="absolute w-[98.5vw] h-[1px] text-zinc-100 top-[90px] opacity-50 z-[999]"
         style={{ opacity: hrOpacity }}
         transition={{ duration: 0.01 }}
         />
