@@ -76,6 +76,7 @@ p{
     color: rgba(255,255,255,1);
     text-decoration: none;
     padding: 10px 10px 10px 40px;
+    bottom: -10vw;
     &::before {
     display: block;
     position: absolute;
@@ -86,7 +87,6 @@ p{
     border: 2px solid rgba(255,255,255,1);
     border-radius: 12px;
     content:"";
-    margin-top: 10rem;
     }
     &::after {
     display: block;
@@ -94,7 +94,6 @@ p{
     top:9px;
     left:11px;
     width: 2px;
-    margin-top: 10rem;
     height: 8px;
     background: rgba(255,255,255,1);
     border-radius: 1px;
