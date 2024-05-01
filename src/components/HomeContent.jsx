@@ -162,13 +162,15 @@ const HomeContent = () => {
   }, [controls2, controls3]);
 
   const calculateBackgroundPosition = (scrollPosition, inView) => {
-    if (inView) {
-      const maxScroll = imageRef.current.clientHeight * 0.2; // Limit to 20% of image height
+    if (inView && imageRef.current && imageRef.current.clientHeight) {
+      const maxScroll = imageRef.current.clientHeight * 0.5; // Limit to 20% of image height
       const adjustedScroll = Math.min(maxScroll, scrollPosition * 0.025);
-      return `calc(100% - ${adjustedScroll}px)`;
+      const finalScroll = Math.max(0, imageRef.current.clientHeight - window.innerHeight); // Limit scroll to image height
+      return `calc(100% - ${Math.min(adjustedScroll, finalScroll)}px)`;
     }
     return '100%';
   };
+  
 
   // Plus animatia 
   const controls = useAnimation();
@@ -220,7 +222,7 @@ const HomeContent = () => {
             className="image_animation w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
               backgroundImage: `url(${work001})`,
-              backgroundSize: '120%',
+              backgroundSize: '125%',
               backgroundPositionX: 'center',
               backgroundRepeat: 'no-repeat',
             }}

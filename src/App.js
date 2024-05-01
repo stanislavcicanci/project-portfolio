@@ -46,7 +46,7 @@ function App() {
 
       <div >
       <motion.div
-        className='style.cursor left-[smoothMouse.x] top-[smoothMouse.y] fixed w-3 h-3 bg-[#F74264] rounded-full'
+        className='style.cursor left-[smoothMouse.x] top-[smoothMouse.y] fixed w-3 h-3 bg-[#F74264] rounded-full z-[999]'
         style={{
           left: smoothMouse.x,
           top: smoothMouse.y,
