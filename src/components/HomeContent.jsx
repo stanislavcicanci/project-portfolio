@@ -96,7 +96,7 @@ const HomeContent = () => {
       if (imageRef1.current) {
         const imageHeight = imageRef1.current.clientHeight;
         const maxScroll = imageHeight * 0.2;
-        const adjustedScroll = Math.min(maxScroll, newScrollY * 0.125);
+        const adjustedScroll = Math.min(maxScroll, newScrollY * 0.07);
         const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
         imageRef1.current.style.backgroundPositionY = backgroundPosition;
 
