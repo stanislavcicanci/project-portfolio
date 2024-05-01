@@ -234,7 +234,7 @@ const HomeContent = () => {
             className="image_animation w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
               backgroundImage: `url(${work001})`,
-              backgroundSize: '125%',
+              backgroundSize: '115%',
               backgroundPositionX: 'center',
               backgroundRepeat: 'no-repeat',
             }}
