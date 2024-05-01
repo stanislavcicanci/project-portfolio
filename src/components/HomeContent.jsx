@@ -134,9 +134,7 @@ const HomeContent = () => {
       const verifyScroll = () => {
         const newScrollY = window.scrollY;
         const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.07);
-        const backgroundSize = `${110 + adjustedScroll / imageHeight * 100}%`; // Calculate dynamic background size
         const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
-        imageRef2.current.style.backgroundSize = `auto ${backgroundSize}`; // Set dynamic background size
         imageRef2.current.style.backgroundPositionY = backgroundPosition;
   
         if (newScrollY >= initialScrollY + imageHeight) {
@@ -155,7 +153,6 @@ const HomeContent = () => {
       return () => window.removeEventListener("scroll", verifyScroll);
     }
   }, [controls2, inViewWork002]);
-  
 
   useEffect(() => {
     if (inViewWork003) {
@@ -166,9 +163,7 @@ const HomeContent = () => {
       const verifyScroll = () => {
         const newScrollY = window.scrollY;
         const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.07);
-        const backgroundSize = `${110 + adjustedScroll / imageHeight * 100}%`; // Calculate dynamic background size
         const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
-        imageRef3.current.style.backgroundSize = `auto ${backgroundSize}`; // Set dynamic background size
         imageRef3.current.style.backgroundPositionY = backgroundPosition;
   
         if (newScrollY >= initialScrollY + imageHeight) {
@@ -187,7 +182,6 @@ const HomeContent = () => {
       return () => window.removeEventListener("scroll", verifyScroll);
     }
   }, [controls3, inViewWork003]);
-  
 
 
   // Plus animatia 
@@ -256,7 +250,7 @@ const HomeContent = () => {
             <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work002})`,
-                backgroundSize: 'auto 110%',
+                backgroundSize: 'auto 125%',
                 backgroundPositionX: 'top',
                 backgroundRepeat: 'no-repeat',
               }}
@@ -273,7 +267,7 @@ const HomeContent = () => {
             <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work003})`,
-                backgroundSize: 'auto 110%',
+                backgroundSize: 'auto 125%',
                 backgroundPositionX: 'center',
                 backgroundRepeat: 'no-repeat',
               }}
