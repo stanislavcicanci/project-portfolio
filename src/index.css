@@ -76,7 +76,7 @@ p{
     color: rgba(255,255,255,1);
     text-decoration: none;
     padding: 10px 10px 10px 40px;
-    top: 46.25vw;
+    bottom: 2.5vw;
     &::before {
     display: block;
     position: absolute;

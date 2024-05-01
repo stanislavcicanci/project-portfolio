@@ -134,7 +134,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className='scroll absolute top-0' ></div>
+        <div className='scroll absolute' ></div>
       </div>
     </>
   );
