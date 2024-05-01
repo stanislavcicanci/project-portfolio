@@ -133,7 +133,7 @@ const HomeContent = () => {
   
       const verifyScroll = () => {
         const newScrollY = window.scrollY;
-        const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.05);
+        const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.07);
         const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
         imageRef2.current.style.backgroundPositionY = backgroundPosition;
   
