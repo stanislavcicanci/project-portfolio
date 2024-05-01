@@ -70,13 +70,13 @@ p{
 
 
 .scroll {
-    position: relative;
+    position: absolute;
     display: block;
     font-size: 0.933rem;
     color: rgba(255,255,255,1);
     text-decoration: none;
     padding: 10px 10px 10px 40px;
-    bottom: 0vw;
+    top: 46.25vw;
     &::before {
     display: block;
     position: absolute;
