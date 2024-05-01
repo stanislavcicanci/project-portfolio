@@ -139,7 +139,7 @@ const Footer = () => {
       // Вы можете заменить 'Europe/Amsterdam' на нужный вам часовой пояс.
     };
     return (
-        <div ref={sectionRef1}>
+        <div ref={sectionRef1} className='bg-white'>
             <div className="grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]">
                 <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-7 mt-[6rem]`}>
                     <motion.div
