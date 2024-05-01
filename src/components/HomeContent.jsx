@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { work001, work002, work003 } from '../index';
 import { AiOutlinePlus } from "react-icons/ai";
+import { useInView } from 'react-intersection-observer';
 
 const Easing = (x) => {
   let clampX = Math.max(0, Math.min(x, 1));
@@ -13,11 +14,9 @@ const HomeContent = () => {
   const [showOverflow, setShowOverflow] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [work002InView, setWork002InView] = useState(false);
-  const [work003InView, setWork003InView] = useState(false);
-  const work002Ref = useRef(null);
-  const work003Ref = useRef(null);
-  const imageRef = useRef(null);
+  const imageRef1 = useRef(null);
+  const imageRef2 = useRef(null);
+  const imageRef3 = useRef(null);
   const controls1 = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
@@ -94,12 +93,12 @@ const HomeContent = () => {
       const newScrollY = window.scrollY;
       setScrollY(newScrollY);
       controls1.start({ rotate: newScrollY * 0.5 });
-      if (imageRef.current) {
-        const imageHeight = imageRef.current.clientHeight;
-        const maxScroll = imageHeight * 0.2; // Limit to 20% of image height
+      if (imageRef1.current) {
+        const imageHeight = imageRef1.current.clientHeight;
+        const maxScroll = imageHeight * 0.2;
         const adjustedScroll = Math.min(maxScroll, newScrollY * 0.125);
         const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
-        imageRef.current.style.backgroundPositionY = backgroundPosition;
+        imageRef1.current.style.backgroundPositionY = backgroundPosition;
 
         if (newScrollY >= imageHeight) {
           controls1.start({
@@ -116,61 +115,74 @@ const HomeContent = () => {
     return () => window.removeEventListener("scroll", verifyScroll);
   }, [controls1]);
 
+  const [refWork002, inViewWork002] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
+  const [refWork003, inViewWork003] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+
   useEffect(() => {
-    const handleIntersection = (entries) => {
-      entries.forEach(entry => {
-        if (entry.target === work002Ref.current) {
-          setWork002InView(entry.isIntersecting);
-          if (entry.isIntersecting) {
-            controls2.start({
-              // Define animations for image 2 here
-            });
-          }
-        } else if (entry.target === work003Ref.current) {
-          setWork003InView(entry.isIntersecting);
-          if (entry.isIntersecting) {
-            controls3.start({
-              // Define animations for image 3 here
-            });
-          }
-        }
-      });
-    };
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.01,
-      duration: 0.5,
-    };
-
-    const observerWork002 = new IntersectionObserver(handleIntersection, observerOptions);
-    const observerWork003 = new IntersectionObserver(handleIntersection, observerOptions);
-
-    if (work002Ref.current) {
-      observerWork002.observe(work002Ref.current);
-    }
-
-    if (work003Ref.current) {
-      observerWork003.observe(work003Ref.current);
-    }
-
-    return () => {
-      observerWork002.disconnect();
-      observerWork003.disconnect();
-    };
-  }, [controls2, controls3]);
-
-  const calculateBackgroundPosition = (scrollPosition, inView) => {
-    if (inView && imageRef.current && imageRef.current.clientHeight) {
-      const maxScroll = imageRef.current.clientHeight * 0.5; // Limit to 20% of image height
-      const adjustedScroll = Math.min(maxScroll, scrollPosition * 0.025);
-      const finalScroll = Math.max(0, imageRef.current.clientHeight - window.innerHeight); // Limit scroll to image height
-      return `calc(100% - ${Math.min(adjustedScroll, finalScroll)}px)`;
-    }
-    return '100%';
-  };
+    if (inViewWork002) {
+      const initialScrollY = imageRef2.current.offsetTop - window.innerHeight;
+      const imageHeight = imageRef2.current.clientHeight;
+      const maxScroll = imageHeight * 0.2;
   
+      const verifyScroll = () => {
+        const newScrollY = window.scrollY;
+        const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.125);
+        const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
+        imageRef2.current.style.backgroundPositionY = backgroundPosition;
+  
+        if (newScrollY >= initialScrollY + imageHeight) {
+          controls2.start({
+            rotate: 0,
+            transition: {
+              duration: 1,
+            }
+          });
+        } else {
+          controls2.start({ rotate: (newScrollY - initialScrollY) * 0.5 });
+        }
+      };
+  
+      window.addEventListener("scroll", verifyScroll);
+      return () => window.removeEventListener("scroll", verifyScroll);
+    }
+  }, [controls2, inViewWork002]);
+
+  useEffect(() => {
+    if (inViewWork003) {
+      const initialScrollY = imageRef3.current.offsetTop - window.innerHeight;
+      const imageHeight = imageRef3.current.clientHeight;
+      const maxScroll = imageHeight * 0.2;
+  
+      const verifyScroll = () => {
+        const newScrollY = window.scrollY;
+        const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.125);
+        const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
+        imageRef3.current.style.backgroundPositionY = backgroundPosition;
+  
+        if (newScrollY >= initialScrollY + imageHeight) {
+          controls3.start({
+            rotate: 0,
+            transition: {
+              duration: 1,
+            }
+          });
+        } else {
+          controls3.start({ rotate: (newScrollY - initialScrollY) * 0.5 });
+        }
+      };
+  
+      window.addEventListener("scroll", verifyScroll);
+      return () => window.removeEventListener("scroll", verifyScroll);
+    }
+  }, [controls3, inViewWork003]);
+
 
   // Plus animatia 
   const controls = useAnimation();
@@ -226,7 +238,7 @@ const HomeContent = () => {
               backgroundPositionX: 'center',
               backgroundRepeat: 'no-repeat',
             }}
-            ref={imageRef}
+            ref={imageRef1}
           ></div>
           <h4 className='w-auto text-left mb-[.5rem] font-medium'>ViZBL | Get to know your friends</h4>
           <div className="tag flex justify-start w-[55.78vw] font-medium flex-wrap">
@@ -234,15 +246,15 @@ const HomeContent = () => {
           </div>
         </div>
         <div className="col-start-1 col-span-4 row-start-4 row-span-1 flex ">
-          <div className="text-left">
+          <div className="text-left" ref={refWork002}>
             <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work002})`,
-                backgroundPositionY: calculateBackgroundPosition(scrollY, work002InView),
-                backgroundSize: 'auto 100%',
-                backgroundPositionX: 'center',
+                backgroundSize: 'auto 125%',
+                backgroundPositionX: 'top',
+                backgroundRepeat: 'no-repeat',
               }}
-              ref={work002Ref}
+              ref={imageRef2}
             ></div>
             <h4 className='text-left mb-2'>SOLIX Moldova</h4>
             <div className="flex">
@@ -250,16 +262,16 @@ const HomeContent = () => {
             </div>
           </div>
         </div>
-        <div className="col-start-5 col-span-4 row-start-4 flex ">
-          <div className="text-left">
+        <div className="col-start-5 col-span-4 row-start-4 row-span-1 flex ">
+          <div className="text-left" ref={refWork003}>
             <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work003})`,
-                backgroundPositionY: calculateBackgroundPosition(scrollY, work003InView),
-                backgroundSize: 'auto 110%',
+                backgroundSize: 'auto 125%',
                 backgroundPositionX: 'center',
+                backgroundRepeat: 'no-repeat',
               }}
-              ref={work003Ref}
+              ref={imageRef3}
             ></div>
             <h4 className='text-left mb-2'>ALUTRADE</h4>
             <div className="flex">
