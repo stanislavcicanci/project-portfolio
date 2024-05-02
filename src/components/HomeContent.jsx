@@ -20,6 +20,7 @@ const HomeContent = () => {
   const controls1 = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
+  const controls = useAnimation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,7 +89,22 @@ const HomeContent = () => {
     return () => clearTimeout(timer);
   }, []);
 
+
+  const [refWork001, inViewWork001] = useInView({
+    triggerOnce: true,
+    threshold: 0.01
+  });
+
+
   useEffect(() => {
+
+    if(inViewWork001){
+      controls1.start({
+        rotate: 0,
+        transition: {
+          duration: 1,
+        }
+      });
     const verifyScroll = () => {
       const newScrollY = window.scrollY;
       setScrollY(newScrollY);
@@ -113,16 +129,17 @@ const HomeContent = () => {
 
     window.addEventListener("scroll", verifyScroll);
     return () => window.removeEventListener("scroll", verifyScroll);
-  }, [controls1]);
+  }
+  }, [controls1, inViewWork001]);
 
   const [refWork002, inViewWork002] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.01,
   });
 
   const [refWork003, inViewWork003] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.01,
   });
 
   useEffect(() => {
@@ -183,10 +200,7 @@ const HomeContent = () => {
     }
   }, [controls3, inViewWork003]);
 
-
-  // Plus animatia 
-  const controls = useAnimation();
-
+  // Plus animatie
   React.useEffect(() => {
     const verifyScroll = () => {
       const scrollY = window.scrollY;
@@ -196,7 +210,6 @@ const HomeContent = () => {
     window.addEventListener("scroll", verifyScroll);
     return () => window.removeEventListener("scroll", verifyScroll);
   }, [controls]);
-
 
   return (
     <div className='bg-white'>
@@ -229,7 +242,7 @@ const HomeContent = () => {
             Work
           </motion.h2>
         </div>
-        <div className="row-start-1 row-span-3 col-start-5 col-span-8 mb-[6rem]">
+        <div className="row-start-1 row-span-3 col-start-5 col-span-8 mb-[6rem]" ref={refWork001}>
           <div
             className="image_animation w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
