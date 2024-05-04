@@ -127,6 +127,10 @@ const HomeContent = () => {
       }
     };
 
+    window.onload = () => {
+      verifyScroll();
+    };
+
     window.addEventListener("scroll", verifyScroll);
     return () => window.removeEventListener("scroll", verifyScroll);
   }
