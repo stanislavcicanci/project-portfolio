@@ -13,6 +13,7 @@ const Footer = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
 useEffect(() => {
+    const footer = document.querySelector('.footer');
 
     const handleScroll = () => {
     if (allowHover) {
@@ -30,11 +31,11 @@ useEffect(() => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousemove', handleMouseMove);
+    footer.addEventListener('mousemove', handleMouseMove);
 
     return () => {
     window.removeEventListener('scroll', handleScroll);
-    document.removeEventListener('mousemove', handleMouseMove);
+    footer.removeEventListener('mousemove', handleMouseMove);
     };
 }, [allowHover]);
 
@@ -137,11 +138,9 @@ useEffect(() => {
 
     const formattedTime = (date) => {
     return date.toLocaleTimeString('en-US', { timeZone: 'Europe/Amsterdam', hour12: false });
-      // Здесь 'Europe/Amsterdam' - это временная зона для Гронингена, Нидерланды.
-      // Вы можете заменить 'Europe/Amsterdam' на нужный вам часовой пояс.
     };
     return (
-        <div ref={sectionRef1} className='bg-white'>
+        <div ref={sectionRef1} className='footer bg-white'>
             <div className="grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]">
                 <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-7 mt-[6rem]`}>
                     <motion.div
