@@ -11,8 +11,9 @@ const Hero = () => {
   const [showOverflow, setShowOverflow] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
   useEffect(() => {
-    const main = document.querySelector('.main');
+
     const handleScroll = () => {
       if (allowHover) {
       const position = window.scrollY;
@@ -29,11 +30,11 @@ const Hero = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    main.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      main.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mousemove', handleMouseMove);
     };
   }, [allowHover]);
 
@@ -81,7 +82,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="main h-[91.5vh] relative bg-[#121212] text-white flex flex-col justify-center items-center" id='main'>
+      <div className="content h-[91.5vh] relative bg-[#121212] text-white flex flex-col justify-center items-center">
         <div className="grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]">
           <div className="col-start-2 col-span-6">
             <div className={`over ${showOverflow ? '' : 'overflow-hidden'}`}>
