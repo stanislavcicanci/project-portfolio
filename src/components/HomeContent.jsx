@@ -92,48 +92,40 @@ const HomeContent = () => {
 
   const [refWork001, inViewWork001] = useInView({
     triggerOnce: true,
-    threshold: 0.01
+    threshold: 0.01,
   });
 
-
   useEffect(() => {
-
-    if(inViewWork001){
-      controls1.start({
-        rotate: 0,
-        transition: {
-          duration: 1,
-        }
-      });
-    const verifyScroll = () => {
-      const newScrollY = window.scrollY;
-      setScrollY(newScrollY);
-      controls1.start({ rotate: newScrollY * 0.5 });
-      if (imageRef1.current) {
-        const imageHeight = imageRef1.current.clientHeight;
-        const maxScroll = imageHeight * 0.2;
-        const adjustedScroll = Math.min(maxScroll, newScrollY * 0.07);
-        const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
+    if (inViewWork001) {
+      const initialScrollY = imageRef1.current.offsetTop - window.innerHeight;
+      const imageHeight = imageRef1.current.clientHeight;
+      const maxScroll = imageHeight * 0.2;
+  
+      const verifyScroll = () => {
+        const newScrollY = window.scrollY;
+        const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.07);
+        const backgroundPosition = `calc(2% - ${adjustedScroll}px)`;
         imageRef1.current.style.backgroundPositionY = backgroundPosition;
-
-        if (newScrollY >= imageHeight) {
+  
+        if (newScrollY >= initialScrollY + imageHeight) {
           controls1.start({
             rotate: 0,
             transition: {
               duration: 1,
             }
           });
+        } else {
+          controls1.start({ rotate: (newScrollY - initialScrollY) * 0.25 });
         }
+      };
+  
+      window.onload = () => {
+        verifyScroll();
       }
-    };
 
-    window.onload = () => {
-      verifyScroll();
-    };
-
-    window.addEventListener("scroll", verifyScroll);
-    return () => window.removeEventListener("scroll", verifyScroll);
-  }
+      window.addEventListener("scroll", verifyScroll);
+      return () => window.removeEventListener("scroll", verifyScroll);
+    }
   }, [controls1, inViewWork001]);
 
   const [refWork002, inViewWork002] = useInView({
