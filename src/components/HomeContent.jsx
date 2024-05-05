@@ -104,7 +104,7 @@ const HomeContent = () => {
       const verifyScroll = () => {
         const newScrollY = window.scrollY;
         const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.07);
-        const backgroundPosition = `calc(2% - ${adjustedScroll}px)`;
+        const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
         imageRef1.current.style.backgroundPositionY = backgroundPosition;
   
         if (newScrollY >= initialScrollY + imageHeight) {
@@ -243,7 +243,7 @@ const HomeContent = () => {
             className="image_animation w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
               backgroundImage: `url(${work001})`,
-              backgroundSize: '110%',
+              backgroundSize: '125%',
               backgroundPositionX: 'center',
               backgroundRepeat: 'no-repeat',
             }}
