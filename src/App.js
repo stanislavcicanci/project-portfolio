@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import HomeContent from './components/HomeContent';
@@ -7,7 +7,6 @@ import SmoothScroll from './components/SmoothScroll';
 import Section3home from './components/Section3home';
 import Footer from './components/Footer';
 function App() {
-
   const cursorSize = 20;
   const mouse = {
     x: useMotionValue(0),
@@ -38,7 +37,38 @@ function App() {
       window.removeEventListener('mousemove', manageMouseMove);
     }
   }, )
+
+  useEffect(() => {
+    const cursor = document.querySelector('.cursor');
   
+    const images = document.querySelectorAll('.image_animation');
+  
+    const handleMouseEnter = () => {
+      cursor.textContent = 'EXPLORE PROJECT';
+      cursor.classList.add('w-[123px]');
+      cursor.classList.add('text-white');
+      cursor.classList.add('text-center');
+      cursor.classList.add('h-[22px]');
+      cursor.classList.add('rounded-none');
+      cursor.classList.add('text-[12px]');
+      cursor.classList.add('justify-center');
+      cursor.classList.add('font-normal');
+      cursor.classList.add('leading-5');
+    };
+
+  
+    images.forEach((image) => {
+      image.addEventListener('mouseenter', handleMouseEnter);
+    });
+  
+    return () => {
+      images.forEach((image) => {
+        image.removeEventListener('mouseenter', handleMouseEnter);
+      });
+    };
+  }, []);
+  
+
 
   return (
     <>
@@ -46,7 +76,7 @@ function App() {
 
       <div >
       <motion.div
-        className='style.cursor left-[smoothMouse.x] top-[smoothMouse.y] fixed w-3 h-3 bg-[#F74264] rounded-full z-[999]'
+        className='cursor left-[smoothMouse.x] top-[smoothMouse.y] fixed w-3 h-3 bg-[#F74264] rounded-full z-[999]'
         style={{
           left: smoothMouse.x,
           top: smoothMouse.y,

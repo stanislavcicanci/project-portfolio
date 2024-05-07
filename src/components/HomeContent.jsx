@@ -256,7 +256,7 @@ const HomeContent = () => {
         </div>
         <div className="col-start-1 col-span-4 row-start-4 row-span-1 flex ">
           <div className="text-left" ref={refWork002}>
-            <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
+            <div className="image_animation w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work002})`,
                 backgroundSize: 'auto 125%',
@@ -273,7 +273,7 @@ const HomeContent = () => {
         </div>
         <div className="col-start-5 col-span-4 row-start-4 row-span-1 flex ">
           <div className="text-left" ref={refWork003}>
-            <div className="w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
+            <div className="image_animation w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work003})`,
                 backgroundSize: 'auto 125%',
