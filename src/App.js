@@ -44,6 +44,7 @@ function App() {
     const images = document.querySelectorAll('.image_animation');
   
     const handleMouseEnter = () => {
+      cursor.style.pointerEvents = 'none';
       cursor.textContent = 'EXPLORE PROJECT';
       cursor.classList.add('w-[123px]');
       cursor.classList.add('text-white');
@@ -56,14 +57,29 @@ function App() {
       cursor.classList.add('leading-5');
     };
 
+    const handleMouseLeave = () => {
+      cursor.textContent = '';
+      cursor.classList.remove('w-[123px]');
+      cursor.classList.remove('text-white');
+      cursor.classList.remove('text-center');
+      cursor.classList.remove('h-[22px]');
+      cursor.classList.remove('rounded-none');
+      cursor.classList.remove('text-[12px]');
+      cursor.classList.remove('justify-center');
+      cursor.classList.remove('font-normal');
+      cursor.classList.remove('leading-5');
+    }
+
   
     images.forEach((image) => {
       image.addEventListener('mouseenter', handleMouseEnter);
+      image.addEventListener('mouseleave', handleMouseLeave);
     });
   
     return () => {
       images.forEach((image) => {
         image.removeEventListener('mouseenter', handleMouseEnter);
+        image.removeEventListener('mouseleave', handleMouseLeave);
       });
     };
   }, []);
