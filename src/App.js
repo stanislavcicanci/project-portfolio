@@ -37,7 +37,9 @@ function App() {
       window.removeEventListener('mousemove', manageMouseMove);
     }
   }, )
-
+  const lerp = (start, end, t) => {
+    return start * (1 - t) + end * t;
+  };
   useEffect(() => {
     const cursor = document.querySelector('.cursor');
     const images = document.querySelectorAll('.image_animation');
@@ -45,22 +47,25 @@ function App() {
     const handleMouseEnter = (e) => {
       const { target } = e;
       const { left, top, width, height } = target.getBoundingClientRect();
-  
-
-      const centerX = left + width / 2 - cursorSize / 2;
-      const centerY = top + height / 2 - cursorSize / 2;
-  
-
-      mouse.x.set(centerX);
-      mouse.y.set(centerY);
-  
+    
+      const imageCenterX = left + width / 2 - cursorSize / 2;
+      const imageCenterY = top + height / 2 - cursorSize / 2;
+    
+      // Aici poți folosi o funcție de interpolare (lerp) pentru a calcula poziția intermediară a cursorului
+      const newX = lerp(mouse.x.get(), imageCenterX, 0.2); // 0.2 este un factor de amortizare pentru o tranziție mai lentă
+      const newY = lerp(mouse.y.get(), imageCenterY, 0.2);
+    
+      mouse.x.set(newX);
+      mouse.y.set(newY);
+    
       cursor.style.pointerEvents = 'none';
       cursor.classList.add('cursor_a');
-
+    
       setTimeout(() => {
-          cursor.textContent = 'EXPLORE PROJECT';
+        cursor.textContent = 'EXPLORE PROJECT';
       }, 202);
-  };
+    };
+    
   
   
     const handleMouseLeave = () => {
