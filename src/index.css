@@ -116,3 +116,22 @@ p{
 }
 
 
+.cursor {
+    font-size: 1px;
+    transition: width 0.5s ease-in-out, font-size 0.7s ease-in-out 0.2s, border-radius 0.5s ease-in-out;
+    color: transparent;
+}
+
+.cursor_a {
+    width: 123px;
+    color: white !important;
+    text-align: center;
+    height: 22px;
+    border-radius: 0;
+    font-size: 12px !important;
+    justify-content: center;
+    font-weight: 400;
+    line-height: 200%;
+    font-variation-settings: 'wght' 400;
+    transition: width 0.5s ease-in-out, font-size 0.5s ease-in-out 0.2s, border-radius 0.5s ease-in-out;
+}

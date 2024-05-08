@@ -40,49 +40,43 @@ function App() {
 
   useEffect(() => {
     const cursor = document.querySelector('.cursor');
-  
     const images = document.querySelectorAll('.image_animation');
-  
-    const handleMouseEnter = () => {
+    
+    const handleMouseEnter = (e) => {
+      const { target } = e;
+      const { left, top, width, height } = target.getBoundingClientRect();
+      
+      // Calculează poziția de centru a divului
+      const centerX = left + width / 2 - cursorSize / 2;
+      const centerY = top + height / 2 - cursorSize / 2;
+      
+      // Setează poziția cursorului la mijlocul divului
+      mouse.x.set(centerX);
+      mouse.y.set(centerY);
+      
       cursor.style.pointerEvents = 'none';
       cursor.textContent = 'EXPLORE PROJECT';
-      cursor.classList.add('w-[123px]');
-      cursor.classList.add('text-white');
-      cursor.classList.add('text-center');
-      cursor.classList.add('h-[22px]');
-      cursor.classList.add('rounded-none');
-      cursor.classList.add('text-[12px]');
-      cursor.classList.add('justify-center');
-      cursor.classList.add('font-normal');
-      cursor.classList.add('leading-5');
+      cursor.classList.add('cursor_a');
     };
-
+  
     const handleMouseLeave = () => {
       cursor.textContent = '';
-      cursor.classList.remove('w-[123px]');
-      cursor.classList.remove('text-white');
-      cursor.classList.remove('text-center');
-      cursor.classList.remove('h-[22px]');
-      cursor.classList.remove('rounded-none');
-      cursor.classList.remove('text-[12px]');
-      cursor.classList.remove('justify-center');
-      cursor.classList.remove('font-normal');
-      cursor.classList.remove('leading-5');
-    }
-
-  
+      cursor.classList.remove('cursor_a');
+    };
+    
     images.forEach((image) => {
       image.addEventListener('mouseenter', handleMouseEnter);
       image.addEventListener('mouseleave', handleMouseLeave);
     });
-  
+    
     return () => {
       images.forEach((image) => {
         image.removeEventListener('mouseenter', handleMouseEnter);
         image.removeEventListener('mouseleave', handleMouseLeave);
       });
     };
-  }, []);
+  }, [mouse.x, mouse.y]);
+  
   
 
 
@@ -92,13 +86,16 @@ function App() {
 
       <div >
       <motion.div
-        className='cursor left-[smoothMouse.x] top-[smoothMouse.y] fixed w-3 h-3 bg-[#F74264] rounded-full z-[999]'
-        style={{
-          left: smoothMouse.x,
-          top: smoothMouse.y,
-        }}
-      >
-      </motion.div>
+  className='cursor fixed w-3 h-3 bg-[#F74264] rounded-full z-[999]'
+  style={{
+    left: smoothMouse.x,
+    top: smoothMouse.y,
+    translateX: '-50%', // Centrare pe axa X
+    translateY: '-50%'  // Centrare pe axa Y
+  }}
+>
+</motion.div>
+
       <motion.div
         style={{
           position: 'fixed',
