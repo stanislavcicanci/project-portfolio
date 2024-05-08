@@ -45,19 +45,23 @@ function App() {
     const handleMouseEnter = (e) => {
       const { target } = e;
       const { left, top, width, height } = target.getBoundingClientRect();
-      
+  
       // Calculează poziția de centru a divului
       const centerX = left + width / 2 - cursorSize / 2;
       const centerY = top + height / 2 - cursorSize / 2;
-      
+  
       // Setează poziția cursorului la mijlocul divului
       mouse.x.set(centerX);
       mouse.y.set(centerY);
-      
+  
       cursor.style.pointerEvents = 'none';
-      cursor.textContent = 'EXPLORE PROJECT';
       cursor.classList.add('cursor_a');
-    };
+      // Amână setarea textului cu 0.5 secunde
+      setTimeout(() => {
+          cursor.textContent = 'EXPLORE PROJECT';
+      }, 202); // 500 milisecunde = 0.5 secunde
+  };
+  
   
     const handleMouseLeave = () => {
       cursor.textContent = '';
