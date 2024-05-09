@@ -152,7 +152,7 @@ useEffect(() => {
                             duration: isVisible ? 0.5 : 0.01,
                         }}
                     >
-                        <h1 className='text-[10.42vw] text-neutral-900 leading-[110%] flex uppercase'>CĂTĂLIN</h1>
+                        <h3 className='text-[10.42vw] text-neutral-900 leading-[110%] flex uppercase'>CĂTĂLIN</h3>
                     </motion.div>
                 </div>
                 <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-8 row-start-2 mb-[6rem]`}>
@@ -165,7 +165,7 @@ useEffect(() => {
                             delay: isVisible ? 0.1  : 0.01
                         }}
                     >
-                        <h1 className='text-[10.42vw] text-neutral-900 flex uppercase'>ȚURCANU.</h1>
+                        <h3 className='text-[10.42vw] text-neutral-900 flex uppercase'>ȚURCANU.</h3>
                     </motion.div>
                 </div>
                 <div className="col-start-9 col-span-3 row-start-1 text-neutral-900 mt-[6rem] flex flex-col gap-y-[1.5rem]">
