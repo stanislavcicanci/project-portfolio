@@ -38,36 +38,36 @@ useEffect(() => {
     };
 }, [allowHover]);
 
-// useEffect(() => {
-//     const headings = document.querySelectorAll('h1');
+useEffect(() => {
+    const headings = document.querySelectorAll('h1');
 
-//     headings.forEach((heading) => {
-//         heading.innerHTML = heading.textContent
-//         .split('')
-//         .map((letter) => {
-//         return `<span>${letter}</span>`;
-//         })
-//         .join('');
+    headings.forEach((heading) => {
+        heading.innerHTML = heading.textContent
+        .split('')
+        .map((letter) => {
+        return `<span>${letter}</span>`;
+        })
+        .join('');
 
-//         const spans = heading.querySelectorAll('span');
+        const spans = heading.querySelectorAll('span');
 
-//         spans.forEach((span) => {
-//         const bounds = span.getBoundingClientRect();
-//         const spanX = bounds.left + bounds.width / 2;
-//         const spanY = bounds.top + bounds.height / 2;
+        spans.forEach((span) => {
+        const bounds = span.getBoundingClientRect();
+        const spanX = bounds.left + bounds.width / 2;
+        const spanY = bounds.top + bounds.height / 2;
 
-//         const diffX = Math.abs(mousePosition.x - spanX);
-//         const diffY = Math.abs(mousePosition.y - spanY);
-//         const distance = Math.sqrt(diffX * diffX + diffY * diffY);
-//         const normalizedDistance = distance / 500;
+        const diffX = Math.abs(mousePosition.x - spanX);
+        const diffY = Math.abs(mousePosition.y - spanY);
+        const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+        const normalizedDistance = distance / 500;
 
-//         let weight = 800 - 400 * Easing(normalizedDistance);
-//         weight = Math.max(400, Math.min(weight, 600));
+        let weight = 800 - 400 * Easing(normalizedDistance);
+        weight = Math.max(400, Math.min(weight, 600));
 
-//         span.style.fontVariationSettings = `'wght' ${weight}`;
-//     });
-//     });
-// }, [scrollPosition, mousePosition]);
+        span.style.fontVariationSettings = `'wght' ${weight}`;
+    });
+    });
+}, [scrollPosition, mousePosition]);
 
 useEffect(() => {
     const timer = setTimeout(() => {
@@ -152,7 +152,7 @@ useEffect(() => {
                             duration: isVisible ? 0.5 : 0.01,
                         }}
                     >
-                        <h3 className='text-[10.42vw] text-neutral-900 leading-[110%] flex uppercase'>CĂTĂLIN</h3>
+                        <h1 className='text-[10.42vw] text-neutral-900 leading-[110%] flex uppercase'>CĂTĂLIN</h1>
                     </motion.div>
                 </div>
                 <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-8 row-start-2 mb-[6rem]`}>
@@ -165,7 +165,7 @@ useEffect(() => {
                             delay: isVisible ? 0.1  : 0.01
                         }}
                     >
-                        <h3 className='text-[10.42vw] text-neutral-900 flex uppercase'>ȚURCANU.</h3>
+                        <h1 className='text-[10.42vw] text-neutral-900 flex uppercase'>ȚURCANU.</h1>
                     </motion.div>
                 </div>
                 <div className="col-start-9 col-span-3 row-start-1 text-neutral-900 mt-[6rem] flex flex-col gap-y-[1.5rem]">
