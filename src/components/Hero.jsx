@@ -38,36 +38,36 @@ const Hero = () => {
     };
   }, [allowHover]);
 
-  useEffect(() => {
-    const headings = document.querySelectorAll('h1');
+  // useEffect(() => {
+  //   const headings = document.querySelectorAll('h1');
 
-    headings.forEach((heading) => {
-      heading.innerHTML = heading.textContent
-        .split('')
-        .map((letter) => {
-          return `<span>${letter}</span>`;
-        })
-        .join('');
+  //   headings.forEach((heading) => {
+  //     heading.innerHTML = heading.textContent
+  //       .split('')
+  //       .map((letter) => {
+  //         return `<span>${letter}</span>`;
+  //       })
+  //       .join('');
 
-      const spans = heading.querySelectorAll('span');
+  //     const spans = heading.querySelectorAll('span');
 
-      spans.forEach((span) => {
-        const bounds = span.getBoundingClientRect();
-        const spanX = bounds.left + bounds.width / 2;
-        const spanY = bounds.top + bounds.height / 2;
+  //     spans.forEach((span) => {
+  //       const bounds = span.getBoundingClientRect();
+  //       const spanX = bounds.left + bounds.width / 2;
+  //       const spanY = bounds.top + bounds.height / 2;
 
-        const diffX = Math.abs(mousePosition.x - spanX);
-        const diffY = Math.abs(mousePosition.y - spanY);
-        const distance = Math.sqrt(diffX * diffX + diffY * diffY);
-        const normalizedDistance = distance / 500;
+  //       const diffX = Math.abs(mousePosition.x - spanX);
+  //       const diffY = Math.abs(mousePosition.y - spanY);
+  //       const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+  //       const normalizedDistance = distance / 500;
 
-        let weight = 800 - 400 * Easing(normalizedDistance);
-        weight = Math.max(400, Math.min(weight, 600));
+  //       let weight = 800 - 400 * Easing(normalizedDistance);
+  //       weight = Math.max(400, Math.min(weight, 600));
 
-        span.style.fontVariationSettings = `'wght' ${weight}`;
-      });
-    });
-  }, [scrollPosition, mousePosition]);
+  //       span.style.fontVariationSettings = `'wght' ${weight}`;
+  //     });
+  //   });
+  // }, [scrollPosition, mousePosition]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
