@@ -21,21 +21,29 @@ const Navbar = () => {
 return (
     <div>
         <nav className='fixed mix-blend-difference top-0 left-0 right-0 h-[90px] text-white z-50'>
-        <div className="flex justify-between leading-[18px] text-lg font-medium pt-[2.5rem] pr-[8rem] pl-[8rem] flex-wrap">
+        <div className="flex justify-between leading-[18px] pr-[1.125rem] text-lg font-medium pl-[1rem] pt-[1.5rem] flex-wrap md:pl-[8rem] md:pt-[2.5rem] md:pr-[8rem]">
         <div className="logo">
                 CĂTĂLIN ȚURKANU.
             </div>
-            <ul className="menu flex list-none gap-[6rem]">
+            <ul className="menu hidden list-none gap-[6rem] md:flex">
                 <li>PROJECTS</li>
                 <li>ABOUT</li>
             </ul>
-            <div className="contact">
+            <div className="contact hidden md:block">
             CONTACTS
+            </div>
+            <div className="block md:hidden">
+                        <div className="burgers">
+                            <label className="burger burger4" htmlFor="burger4">
+                                <input className="hiddenn" id="burger4" type="checkbox"/>
+                                <span></span>
+                            </label>
+                        </div>
             </div>
         </div>
         </nav>
         <hr
-        className="absolute w-[98.5vw] h-[1px] text-zinc-100 top-[90px] opacity-50 z-[999]"
+        className="absolute w-[98.5vw] h-[1px] text-zinc-100 top-[4rem] opacity-50 z-[999] md:top-[90px]"
         style={{ opacity: hrOpacity }}
         transition={{ duration: 0.01 }}
         />
