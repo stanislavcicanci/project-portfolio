@@ -51,8 +51,8 @@ function App() {
       const imageCenterX = left + width / 2 - cursorSize / 2;
       const imageCenterY = top + height / 2 - cursorSize / 2;
     
-      // Aici poți folosi o funcție de interpolare (lerp) pentru a calcula poziția intermediară a cursorului
-      const newX = lerp(mouse.x.get(), imageCenterX, 0.2); // 0.2 este un factor de amortizare pentru o tranziție mai lentă
+
+      const newX = lerp(mouse.x.get(), imageCenterX, 0.2); 
       const newY = lerp(mouse.y.get(), imageCenterY, 0.2);
     
       mouse.x.set(newX);
@@ -95,12 +95,12 @@ function App() {
 
       <div >
       <motion.div
-  className='cursor fixed w-3 h-3 bg-[#F74264] rounded-full z-[999]'
+  className='cursor fixed w-3 h-3 bg-[#F74264] rounded-full z-[999] pointer-events-none'
   style={{
     left: smoothMouse.x,
     top: smoothMouse.y,
-    translateX: '-50%', // Centrare pe axa X
-    translateY: '-50%'  // Centrare pe axa Y
+    translateX: '-50%',
+    translateY: '-50%'
   }}
 >
 </motion.div>

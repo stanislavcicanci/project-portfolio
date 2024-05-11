@@ -43,7 +43,6 @@ h2{
 h4{
     color: #121212;
     text-align: right;
-    font-size: 1.5rem;
     font-weight: 400;
     line-height: 100%;
 }
@@ -76,7 +75,6 @@ p{
     color: rgba(255,255,255,1);
     text-decoration: none;
     padding: 10px 10px 10px 40px;
-    bottom: 2.5vw;
     &::before {
     display: block;
     position: absolute;

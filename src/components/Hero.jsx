@@ -83,11 +83,11 @@ const Hero = () => {
   return (
     <>
       <div className="content h-[91.5vh] relative bg-[#121212] text-white flex flex-col justify-center items-center">
-        <div className="grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]">
-          <div className="col-start-2 col-span-6">
+        <div className="grid grid-cols-4 grid-rows-3 gap-x-[12px] md:grid-cols-12 md:grid-rows-2  md:gap-6 mx-[1rem] md:mx-[7vw]">
+          <div className="col-start-1 col-span-3 row-start-2 sm:text-[4rem] md:col-start-2 md:col-span-6 md:row-start-1">
             <div className={`over ${showOverflow ? '' : 'overflow-hidden'}`}>
               <motion.h1
-                className="text-[10.42vw] flex uppercase"
+                className="text-[4rem] md:text-[10.42vw] flex uppercase"
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
@@ -100,7 +100,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="text_homeh4 col-start-8 text-right h-[6.3rem] col-span-4 flex items-end flex-col md:text-[1.5vw] lg:text-[1.25vw] text-white !important uppercase">
+          <div className="text_homeh4 col-start-2 col-span-3 md:col-start-8 text-right h-[6.3rem] md:col-span-4 flex items-end flex-col md:text-[1.5vw] lg:text-[1.25vw] text-white !important uppercase">
             <h4 className="">
               MOLDOVIAN DESIGNER creating
             </h4>
@@ -112,15 +112,15 @@ const Hero = () => {
             </h4>
           </div>
 
-          <div className="text_homeh4 col-start-2 col-span-3 flex justify-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
+          <div className="text_homeh4 text-[1rem] col-start-1 col-span-3  md:col-start-2 md:col-span-3 flex justify-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
             <h4 className="col-start-2 text-left">©2024</h4>
             <h4 className=" text-left">ROFFESIONAL CAREER</h4>
             <h4 className="col-start-2 text-left">AGING LIKE FINE WINE</h4>
           </div>
-          <div className="col-start-5 col-span-7 flex items-end justify-end mt-0">
+          <div className="col-start-1 col-span-4 row-start-2 md:col-start-5 md:col-span-7 flex items-end justify-end mt-0">
             <div className={`over ${showOverflow ? '' : 'overflow-hidden'} w-[100vw] flex items-end justify-end`}>
               <motion.h1
-                className="text-[10.42vw] flex uppercase"
+                className="md:text-[10.42vw] flex uppercase text-[4rem]"
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
@@ -134,7 +134,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className='scroll absolute' ></div>
+        <div className='scroll absolute bottom-[15vw] lg:bottom-[2.5vw]' ></div>
       </div>
     </>
   );
