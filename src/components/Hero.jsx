@@ -83,7 +83,7 @@ const Hero = () => {
   return (
     <>
       <div className="content h-[91.5vh] relative bg-[#121212] text-white flex flex-col justify-center items-center">
-        <div className="grid grid-cols-4 grid-rows-3 gap-x-[12px] md:grid-cols-12 md:grid-rows-2  md:gap-6 mx-[1rem] md:mx-[7vw]">
+        <div className="grid grid-cols-4 mt-[20vw] grid-rows-3 gap-x-[12px] sm:mt-0 md:grid-cols-12 md:grid-rows-2  md:gap-6 mx-[1rem] md:mx-[7vw]">
           <div className="col-start-1 col-span-3 row-start-2 sm:text-[4rem] md:col-start-2 md:col-span-6 md:row-start-1">
             <div className={`over ${showOverflow ? '' : 'overflow-hidden'}`}>
               <motion.h1
