@@ -209,10 +209,10 @@ const HomeContent = () => {
 
   return (
     <div className='bg-white'>
-      <div className='grid grid-cols-12 grid-rows-auto-fill gap-6 mx-[7vw] pt-12 pb-36'>
-        <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 row-start-1 col-span-4`}>
+      <div className='grid grid-cols-4 gap-x-[0.75rem] pt-[3rem] mx-[1rem] sm:grid-cols-12 grid-rows-auto-fill sm:gap-6 sm:mx-[7vw] sm:pt-12 sm:pb-36'>
+        <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 col-span-3 sm:col-start-1 sm:row-start-1 sm:col-span-4 pb-[1rem] sm:pb-0`}>
           <motion.h2
-            className='text-[5.66vw] flex uppercase'
+            className='text-[4rem] sm:text-[5.66vw] flex uppercase'
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
@@ -224,9 +224,9 @@ const HomeContent = () => {
             Recent
           </motion.h2>
         </div>
-        <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 row-start-2 col-span-8`}>
+        <div className={`over ${showOverflow ? '' : 'overflow-hidden'} row-start-2 col-start-1 col-span-3 sm:col-start-1 sm:row-start-2 sm:col-span-8 pb-[1.5rem] sm:pb-0`}>
           <motion.h2
-            className='text-[5.66vw] flex uppercase'
+            className='text-[4rem] sm:text-[5.66vw] flex uppercase'
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
@@ -238,9 +238,9 @@ const HomeContent = () => {
             Work
           </motion.h2>
         </div>
-        <div className="row-start-1 row-span-3 col-start-5 col-span-8 mb-[6rem]" ref={refWork001}>
+        <div className="row-start-3 col-start-1 col-span-4 sm:row-start-1  sm:row-span-3 sm:col-start-5 sm:col-span-8 mb-[1rem] sm:mb-[6rem]" ref={refWork001}>
           <div
-            className="image_animation w-[55.78vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
+            className="image_animation h-[16.125rem] sm:w-[55.78vw] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
               backgroundImage: `url(${work001})`,
               backgroundSize: '110%',
@@ -250,17 +250,17 @@ const HomeContent = () => {
             ref={imageRef1}
           ></div>
           <h4 className='w-auto text-left mb-[.5rem] font-medium'>ViZBL | Get to know your friends</h4>
-          <div className="tag flex justify-start w-[55.78vw] font-medium flex-wrap">
+          <div className="tag flex justify-start w-[55.78vw] font-medium sm:flex-wrap">
             <p className='ml-0'>#web design</p> <p>#ui/ux</p> <p>#3d motion</p> <p>#branding</p> <p>#creative direction</p>
           </div>
         </div>
-        <div className="col-start-1 col-span-4 row-start-4 row-span-1 flex ">
+        <div className="row-start-4 col-start-1 col-span-4 sm:col-start-1 sm:col-span-4 sm:row-start-4 sm:row-span-1 flex ">
           <div className="text-left" ref={refWork002}>
-            <div className="image_animation w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
+            <div className="image_animation w-[22.375rem] sm:w-[27.24vw] h-[16.125rem] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work002})`,
                 backgroundSize: 'auto 125%',
-                backgroundPositionX: 'top',
+                backgroundPositionX: 'center',
                 backgroundRepeat: 'no-repeat',
               }}
               ref={imageRef2}
@@ -271,7 +271,7 @@ const HomeContent = () => {
             </div>
           </div>
         </div>
-        <div className="col-start-5 col-span-4 row-start-4 row-span-1 flex ">
+        <div className="row-start-5 col-start-1 col-span-4 sm:col-start-5 sm:col-span-4 sm:row-start-4 sm:row-span-1 flex ">
           <div className="text-left" ref={refWork003}>
             <div className="image_animation w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
@@ -288,7 +288,7 @@ const HomeContent = () => {
             </div>
           </div>
         </div>
-        <div className="row-start-4 col-start-10 col-span-3 flex items-end justify-end">
+        <div className="row-start-6 col-start-1 col-span-4 sm:row-start-4 sm:col-start-10 sm:col-span-3 flex items-end justify-end">
           <div className="flex justify-center align-center items-center">
             <motion.div
               animate={controls}

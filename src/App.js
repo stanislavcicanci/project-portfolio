@@ -119,8 +119,8 @@ function App() {
       <Navbar />
       <Hero />
       <HomeContent />
-      <Section3home />
-      <Footer />
+      {/* <Section3home />
+      <Footer /> */}
       </div>
       </SmoothScroll>
     </>
