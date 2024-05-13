@@ -99,12 +99,12 @@ const HomeContent = () => {
     if (inViewWork001) {
       const initialScrollY = imageRef1.current.offsetTop - window.innerHeight;
       const imageHeight = imageRef1.current.clientHeight;
-      const maxScroll = imageHeight * 0.2;
+      const maxScroll = imageHeight * 0.15;
   
       const verifyScroll = () => {
         const newScrollY = window.scrollY;
         const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.07);
-        const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
+        const backgroundPosition = `calc(1% - ${adjustedScroll}px)`;
         imageRef1.current.style.backgroundPositionY = backgroundPosition;
   
         if (newScrollY >= initialScrollY + imageHeight) {
