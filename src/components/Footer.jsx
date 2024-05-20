@@ -137,13 +137,11 @@ useEffect(() => {
 
     const formattedTime = (date) => {
     return date.toLocaleTimeString('en-US', { timeZone: 'Europe/Amsterdam', hour12: false });
-      // Здесь 'Europe/Amsterdam' - это временная зона для Гронингена, Нидерланды.
-      // Вы можете заменить 'Europe/Amsterdam' на нужный вам часовой пояс.
     };
     return (
         <div ref={sectionRef1} className='bg-white'>
-            <div className="grid grid-cols-12 grid-rows-2 gap-6 mx-[7vw]">
-                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-7 mt-[6rem]`}>
+            <div className="grid grid-cols-4 grid-rows-3 mx-[1rem] sm:grid-cols-12 sm:grid-rows-2 sm:gap-6 sm:mx-[7vw]">
+                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-1 col-span-4 mt-[4rem] sm:col-start-2 sm:col-span-7 sm:mt-[6rem]`}>
                     <motion.div
                         initial={{ y: 100, opacity: 0 }} 
                         animate={isVisible ? { y: 0, opacity: 1 } : {}}
@@ -155,7 +153,7 @@ useEffect(() => {
                         <h1 className='text-[10.42vw] text-neutral-900 leading-[110%] flex uppercase'>CĂTĂLIN</h1>
                     </motion.div>
                 </div>
-                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-2 col-span-8 row-start-2 mb-[6rem]`}>
+                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-1 col-span-4 h-auto row-start-2 mb-[3rem] sm:col-start-2 sm:col-span-8 sm:row-start-2 sm:mb-[6rem]`}>
                     <motion.div
                         initial={{ y: 100, opacity: 0 }} 
                         animate={isVisible ? { y: 0, opacity: 1 } : {}}
@@ -168,13 +166,12 @@ useEffect(() => {
                         <h1 className='text-[10.42vw] text-neutral-900 flex uppercase'>ȚURCANU.</h1>
                     </motion.div>
                 </div>
-                <div className="col-start-9 col-span-3 row-start-1 text-neutral-900 mt-[6rem] flex flex-col gap-y-[1.5rem]">
-                    <div className="">
+                <div className="cols-start-1 col-span-3 items-start sm:items-end row-start-3 sm:col-start-9 sm:col-span-3 sm:row-start-1 text-neutral-900 sm:mt-[6rem] flex flex-col gap-y-[1.5rem]">
+                    <div className="text-left">
                         <h4>
                         Got a project in mind?
                         </h4>
-                        <h4>
-                        Let’s make it reality
+                        <h4>Let’s make it reality
                         </h4>
                     </div>
                     <h4>turkanu@studiomodvis.com</h4>

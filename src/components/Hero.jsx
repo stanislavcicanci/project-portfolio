@@ -87,7 +87,7 @@ const Hero = () => {
           <div className="col-start-1 col-span-3 row-start-2 sm:text-[4rem] md:col-start-2 md:col-span-6 md:row-start-1">
             <div className={`over ${showOverflow ? '' : 'overflow-hidden'}`}>
               <motion.h1
-                className="text-[4rem] md:text-[10.42vw] flex uppercase"
+                className="flex uppercase"
                 initial={{ y: 100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{
