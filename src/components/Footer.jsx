@@ -153,7 +153,7 @@ useEffect(() => {
                         <h1 className='text-[10.42vw] text-neutral-900 leading-[110%] flex uppercase'>CĂTĂLIN</h1>
                     </motion.div>
                 </div>
-                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-1 col-span-4 h-auto row-start-2 mb-[3rem] sm:col-start-2 sm:col-span-8 sm:row-start-2 sm:mb-[6rem]`}>
+                <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-1 col-span-4 h-[2.8125rem] sm:h-auto row-start-2 mb-[3rem] sm:col-start-2 sm:col-span-8 sm:row-start-2 sm:mb-[6rem]`}>
                     <motion.div
                         initial={{ y: 100, opacity: 0 }} 
                         animate={isVisible ? { y: 0, opacity: 1 } : {}}
@@ -171,19 +171,19 @@ useEffect(() => {
                         <h4>
                         Got a project in mind?
                         </h4>
-                        <h4>Let’s make it reality
+                        <h4 className='text-left sm:text-right'>Let’s make it reality
                         </h4>
                     </div>
                     <h4>turkanu@studiomodvis.com</h4>
-                    <h4>Groningen, NL - {formattedTime(time)}</h4>
+                    <h4 className='mb-[3rem] sm:mb-0'>Groningen, NL - {formattedTime(time)}</h4>
                 </div>
             </div>
-            <div className="flex justify-around mb-[2.5rem] leading-[18px] text-lg font-medium">
-                <p className='text-neutral-900 '> LINKEDIN</p>
-                <p className='text-neutral-900 '> BEHANCE</p>
-                <p className='text-neutral-900 '> INSTAGRAM</p>
-                <p className='text-neutral-900 '> FACEBOOK</p>
-                <p className='text-neutral-900 '> TELEGRAM</p>
+            <div className="grid gap-y-[0.5rem] px-[1rem] grid-cols-4 sm:flex justify-around mb-[2.5rem] leading-[18px] text-lg font-medium">
+                <p className='text-neutral-900 col-start-1'> LINKEDIN</p>
+                <p className='text-neutral-900 row-start-2'> BEHANCE</p>
+                <p className='text-neutral-900 row-start-3'> INSTAGRAM</p>
+                <p className='text-neutral-900 col-start-4'> FACEBOOK</p>
+                <p className='text-neutral-900 col-start-4'> TELEGRAM</p>
             </div>
         </div>
     )
