@@ -120,7 +120,7 @@ function App() {
       <Hero />
       <HomeContent />
       <Section3home />
-      {/* <Footer /> */}
+      <Footer />
       </div>
       </SmoothScroll>
     </>
