@@ -178,7 +178,7 @@ useEffect(() => {
                     <h4 className='mb-[3rem] sm:mb-0'>Groningen, NL - {formattedTime(time)}</h4>
                 </div>
             </div>
-            <div className="grid gap-y-[0.5rem] px-[1rem] grid-cols-4 sm:flex justify-around mb-[2.5rem] leading-[18px] text-lg font-medium">
+            <div className="grid gap-y-[0.5rem] px-[1rem] grid-cols-4 sm:flex justify-around mb-[3rem] sm:mb-[2.5rem] leading-[18px] text-lg font-medium">
                 <p className='text-neutral-900 col-start-1'> LINKEDIN</p>
                 <p className='text-neutral-900 row-start-2'> BEHANCE</p>
                 <p className='text-neutral-900 row-start-3'> INSTAGRAM</p>
