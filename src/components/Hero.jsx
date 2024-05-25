@@ -11,63 +11,75 @@ const Hero = () => {
   const [showOverflow, setShowOverflow] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    const checkTouchDevice = () => {
+      setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+
+    checkTouchDevice();
 
     const handleScroll = () => {
       if (allowHover) {
-      const position = window.scrollY;
-      setScrollPosition(position);
+        const position = window.scrollY;
+        setScrollPosition(position);
       }
     };
 
     const handleMouseMove = (event) => {
       if (allowHover) {
-      const mouseX = event.clientX;
-      const mouseY = event.clientY;
-      setMousePosition({ x: mouseX, y: mouseY });
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        setMousePosition({ x: mouseX, y: mouseY });
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousemove', handleMouseMove);
+    if (!isTouchDevice) {
+      window.addEventListener('scroll', handleScroll);
+      document.addEventListener('mousemove', handleMouseMove);
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('mousemove', handleMouseMove);
+      if (!isTouchDevice) {
+        window.removeEventListener('scroll', handleScroll);
+        document.removeEventListener('mousemove', handleMouseMove);
+      }
     };
-  }, [allowHover]);
+  }, [allowHover, isTouchDevice]);
 
   useEffect(() => {
-    const headings = document.querySelectorAll('h1');
+    if (!isTouchDevice) {
+      const headings = document.querySelectorAll('h1');
 
-    headings.forEach((heading) => {
-      heading.innerHTML = heading.textContent
-        .split('')
-        .map((letter) => {
-          return `<span>${letter}</span>`;
-        })
-        .join('');
+      headings.forEach((heading) => {
+        heading.innerHTML = heading.textContent
+          .split('')
+          .map((letter) => {
+            return `<span>${letter}</span>`;
+          })
+          .join('');
 
-      const spans = heading.querySelectorAll('span');
+        const spans = heading.querySelectorAll('span');
 
-      spans.forEach((span) => {
-        const bounds = span.getBoundingClientRect();
-        const spanX = bounds.left + bounds.width / 2;
-        const spanY = bounds.top + bounds.height / 2;
+        spans.forEach((span) => {
+          const bounds = span.getBoundingClientRect();
+          const spanX = bounds.left + bounds.width / 2;
+          const spanY = bounds.top + bounds.height / 2;
 
-        const diffX = Math.abs(mousePosition.x - spanX);
-        const diffY = Math.abs(mousePosition.y - spanY);
-        const distance = Math.sqrt(diffX * diffX + diffY * diffY);
-        const normalizedDistance = distance / 500;
+          const diffX = Math.abs(mousePosition.x - spanX);
+          const diffY = Math.abs(mousePosition.y - spanY);
+          const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+          const normalizedDistance = distance / 500;
 
-        let weight = 800 - 400 * Easing(normalizedDistance);
-        weight = Math.max(400, Math.min(weight, 600));
+          let weight = 800 - 400 * Easing(normalizedDistance);
+          weight = Math.max(400, Math.min(weight, 600));
 
-        span.style.fontVariationSettings = `'wght' ${weight}`;
+          span.style.fontVariationSettings = `'wght' ${weight}`;
+        });
       });
-    });
-  }, [scrollPosition, mousePosition]);
+    }
+  }, [scrollPosition, mousePosition, isTouchDevice]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
