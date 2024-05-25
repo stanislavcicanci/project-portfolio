@@ -37,6 +37,28 @@ function App() {
       window.removeEventListener('mousemove', manageMouseMove);
     }
   }, )
+
+
+
+  useEffect(() => {
+    const manageMouseMove = (e) => {
+      const { clientX, clientY } = e;
+  
+      mouse.x.set(clientX - cursorSize / 2);
+      mouse.y.set(clientY - cursorSize / 2);
+    }
+
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    
+    if (!isTouchDevice) {
+      window.addEventListener('mousemove', manageMouseMove);
+      return () => {
+        window.removeEventListener('mousemove', manageMouseMove);
+      }
+    }
+  }, [mouse.x, mouse.y])
+
+  
   const lerp = (start, end, t) => {
     return start * (1 - t) + end * t;
   };
@@ -91,7 +113,7 @@ function App() {
 
   return (
     <>
-    <SmoothScroll>    
+    <SmoothScroll className='bg-white'>    
 
       <div >
       <motion.div

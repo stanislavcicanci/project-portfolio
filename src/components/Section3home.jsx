@@ -12,7 +12,7 @@ const Section3home = () => {
         const options = {
             root: null,
             rootMargin: "0px",
-            threshold: 0.2
+            threshold: 0.5
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -65,7 +65,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0}} 
-                        transition={{ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01 }}
+                        transition={{ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5 }}
                     >
                         Lorem ipsum dolor sit amet, consectetur
                     </motion.div>
@@ -74,7 +74,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }} 
-                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01, delay: isVisible ?.1 : 0.01 }}
+                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5, delay: isVisible ?.1 : 0.01 }}
                     >
                         adipiscing elit. Aenean dignissim felis nunc,
                     </motion.div>
@@ -83,7 +83,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }} 
-                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01,delay: isVisible ?.2 : 0.01 }}
+                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5,delay: isVisible ?.2 : 0.01 }}
                     >
                         ac volutpat lorem scelerisque a. Cras ac nulla 
                     </motion.div>
@@ -92,7 +92,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }} 
-                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01,delay: isVisible ?.3 : 0.01  }}
+                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5,delay: isVisible ?.3 : 0.01  }}
                     >
                         non justo ultrices gravida. Cras a eros fringilla
                     </motion.div>
@@ -101,7 +101,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }} 
-                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01,delay: isVisible ?.4 : 0.01 }}
+                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5,delay: isVisible ?.4 : 0.01 }}
                     >
                         tellus commodo semper a sed nisl.
                     </motion.div>
@@ -115,7 +115,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }} 
-                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01,delay: isVisible ?.5 : 0.01  }}
+                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5,delay: isVisible ?.5 : 0.01  }}
                     >
                     <h3 className="text-white">Web Design</h3> 
                     </motion.div>
@@ -125,7 +125,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }} 
-                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01,delay: isVisible ?.6 : 0.01  }}
+                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5,delay: isVisible ?.6 : 0.01  }}
                     >
                     <h3 className="text-white">UI / UX</h3>
                     </motion.div>
@@ -135,7 +135,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }} 
-                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01,delay: isVisible ?.7 : 0.01  }}
+                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5,delay: isVisible ?.7 : 0.01  }}
                     >
                     <h3 className="text-white">3D Motion / Animation</h3>
                     </motion.div>
@@ -145,7 +145,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }} 
-                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01,delay: isVisible ?.8 : 0.01 }}
+                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5,delay: isVisible ?.8 : 0.01 }}
                     >
                     <h3 className="text-white">Printed Media</h3>
                     </motion.div>
@@ -155,7 +155,7 @@ const Section3home = () => {
                     <motion.div 
                         initial={{ y: 50, opacity: 0 }}
                         animate={isVisible ? { y: 0, opacity: 1 } : { y: 60, opacity: 0 }} 
-                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.01, delay: isVisible ?.9 : 0.01  }}
+                        transition={{ ease: 'easeInOut', duration: isVisible ? 0.5 : 0.5, delay: isVisible ?.9 : 0.01  }}
                     >
                     <h3 className="text-white">Creative Direction</h3>
                     </motion.div>
