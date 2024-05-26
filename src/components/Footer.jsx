@@ -12,73 +12,76 @@ const Footer = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-useEffect(() => {
+    useEffect(() => {
+        // Detect touch device
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        setAllowHover(!isTouchDevice);
 
-    const handleScroll = () => {
-    if (allowHover) {
-    const position = window.scrollY;
-    setScrollPosition(position);
-    }
-    };
+        const handleScroll = () => {
+            if (allowHover) {
+                const position = window.scrollY;
+                setScrollPosition(position);
+            }
+        };
 
-    const handleMouseMove = (event) => {
-    if (allowHover) {
-    const mouseX = event.clientX;
-    const mouseY = event.clientY;
-    setMousePosition({ x: mouseX, y: mouseY });
-    }
-    };
+        const handleMouseMove = (event) => {
+            if (allowHover) {
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+                setMousePosition({ x: mouseX, y: mouseY });
+            }
+        };
 
-    window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('scroll', handleScroll);
+        document.addEventListener('mousemove', handleMouseMove);
 
-    return () => {
-    window.removeEventListener('scroll', handleScroll);
-    document.removeEventListener('mousemove', handleMouseMove);
-    };
-}, [allowHover]);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            document.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, [allowHover]);
 
-useEffect(() => {
-    const headings = document.querySelectorAll('h1');
+    useEffect(() => {
+        if (!allowHover) return; // Prevent animation if hover is not allowed
 
-    headings.forEach((heading) => {
-        heading.innerHTML = heading.textContent
-        .split('')
-        .map((letter) => {
-        return `<span>${letter}</span>`;
-        })
-        .join('');
+        const headings = document.querySelectorAll('h1');
 
-        const spans = heading.querySelectorAll('span');
+        headings.forEach((heading) => {
+            heading.innerHTML = heading.textContent
+                .split('')
+                .map((letter) => `<span>${letter}</span>`)
+                .join('');
 
-        spans.forEach((span) => {
-        const bounds = span.getBoundingClientRect();
-        const spanX = bounds.left + bounds.width / 2;
-        const spanY = bounds.top + bounds.height / 2;
+            const spans = heading.querySelectorAll('span');
 
-        const diffX = Math.abs(mousePosition.x - spanX);
-        const diffY = Math.abs(mousePosition.y - spanY);
-        const distance = Math.sqrt(diffX * diffX + diffY * diffY);
-        const normalizedDistance = distance / 500;
+            spans.forEach((span) => {
+                const bounds = span.getBoundingClientRect();
+                const spanX = bounds.left + bounds.width / 2;
+                const spanY = bounds.top + bounds.height / 2;
 
-        let weight = 800 - 400 * Easing(normalizedDistance);
-        weight = Math.max(400, Math.min(weight, 600));
+                const diffX = Math.abs(mousePosition.x - spanX);
+                const diffY = Math.abs(mousePosition.y - spanY);
+                const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+                const normalizedDistance = distance / 500;
 
-        span.style.fontVariationSettings = `'wght' ${weight}`;
-    });
-    });
-}, [scrollPosition, mousePosition]);
+                let weight = 800 - 400 * Easing(normalizedDistance);
+                weight = Math.max(400, Math.min(weight, 600));
 
-useEffect(() => {
-    const timer = setTimeout(() => {
-    setAllowHover(true);
-    setTimeout(() => {
-        setShowOverflow(true);
-    }, 0);
-    }, 900);
+                span.style.fontVariationSettings = `'wght' ${weight}`;
+            });
+        });
+    }, [scrollPosition, mousePosition, allowHover]);
 
-    return () => clearTimeout(timer);
-}, []);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setAllowHover(true);
+            setTimeout(() => {
+                setShowOverflow(true);
+            }, 0);
+        }, 900);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     const [isVisible, setIsVisible] = useState(false);
     const [isOverflowing, setIsOverflowing] = useState(false);
@@ -124,20 +127,21 @@ useEffect(() => {
         }
     }, [isVisible, isOverflowing]);
 
-    //Ceas
+    // Ceas
     const [time, setTime] = useState(new Date());
 
     useEffect(() => {
-    const interval = setInterval(() => {
-        setTime(new Date());
-    }, 1000);
+        const interval = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
 
-    return () => clearInterval(interval);
+        return () => clearInterval(interval);
     }, []);
 
     const formattedTime = (date) => {
-    return date.toLocaleTimeString('en-US', { timeZone: 'Europe/Amsterdam', hour12: false });
+        return date.toLocaleTimeString('en-US', { timeZone: 'Europe/Amsterdam', hour12: false });
     };
+
     return (
         <div ref={sectionRef1} className='bg-white'>
             <div className="grid grid-cols-4 grid-rows-3 mx-[1rem] sm:grid-cols-12 sm:grid-rows-2 sm:gap-6 sm:mx-[7vw]">
@@ -160,7 +164,7 @@ useEffect(() => {
                         transition={{
                             ease: 'easeInOut',
                             duration: 0.5,
-                            delay: isVisible ? 0.1  : 0.01
+                            delay: isVisible ? 0.1 : 0.01
                         }}
                     >
                         <h1 className='text-[10.42vw] text-neutral-900 flex uppercase'>ȚURCANU.</h1>
@@ -168,22 +172,19 @@ useEffect(() => {
                 </div>
                 <div className="cols-start-1 col-span-3 items-start sm:items-end row-start-3 sm:col-start-9 sm:col-span-3 sm:row-start-1 text-neutral-900 sm:mt-[6rem] flex flex-col gap-y-[1.5rem]">
                     <div className="text-left">
-                        <h4>
-                        Got a project in mind?
-                        </h4>
-                        <h4 className='text-left sm:text-right'>Let’s make it reality
-                        </h4>
+                        <h4>Got a project in mind?</h4>
+                        <h4 className='text-left sm:text-right'>Let’s make it reality</h4>
                     </div>
                     <h4>turkanu@studiomodvis.com</h4>
                     <h4 className='mb-[3rem] sm:mb-0'>Groningen, NL - {formattedTime(time)}</h4>
                 </div>
             </div>
             <div className="grid gap-y-[0.5rem] px-[1rem] grid-cols-4 sm:flex justify-around mb-[3rem] sm:mb-[2.5rem] leading-[18px] text-lg font-medium">
-                <p className='text-neutral-900 col-start-1'> LINKEDIN</p>
-                <p className='text-neutral-900 row-start-2'> BEHANCE</p>
-                <p className='text-neutral-900 row-start-3'> INSTAGRAM</p>
-                <p className='text-neutral-900 col-start-4'> FACEBOOK</p>
-                <p className='text-neutral-900 col-start-4'> TELEGRAM</p>
+                <p className='text-neutral-900 col-start-1'>LINKEDIN</p>
+                <p className='text-neutral-900 row-start-2'>BEHANCE</p>
+                <p className='text-neutral-900 row-start-3'>INSTAGRAM</p>
+                <p className='text-neutral-900 col-start-4'>FACEBOOK</p>
+                <p className='text-neutral-900 col-start-4'>TELEGRAM</p>
             </div>
         </div>
     )

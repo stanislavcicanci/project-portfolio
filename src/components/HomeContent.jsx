@@ -22,6 +22,39 @@ const HomeContent = () => {
   const controls3 = useAnimation();
   const controls = useAnimation();
 
+  const handleScroll = () => {
+    const imageRefs = [imageRef1, imageRef2, imageRef3];
+  
+    imageRefs.forEach((imageRef) => {
+      if (imageRef.current) {
+        const element = imageRef.current;
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+  
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          const scrollTop = window.scrollY;
+          const elementTop = element.offsetTop;
+          const elementHeight = element.clientHeight;
+          const scrollAmount = (scrollTop - elementTop + windowHeight) / elementHeight;
+  
+          // Adjusting the factor to slow down the scroll effect
+          const slowScrollAmount = scrollAmount * 0.5;
+  
+          if (slowScrollAmount >= 0 && slowScrollAmount <= 1) {
+            element.style.backgroundPositionY = `${slowScrollAmount * 100}%`;
+          }
+        }
+      }
+    });
+  };
+  
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+
   useEffect(() => {
     const handleScroll = () => {
       if (allowHover) {
@@ -88,7 +121,6 @@ const HomeContent = () => {
 
     return () => clearTimeout(timer);
   }, []);
-
 
   const [refWork001, inViewWork001] = useInView({
     triggerOnce: true,
@@ -254,8 +286,8 @@ const HomeContent = () => {
             <p className='ml-0'>#web design</p> <p>#ui/ux</p> <p>#3d motion</p> <p>#branding</p> <p>#creative direction</p>
           </div>
         </div>
-        <div className="row-start-4 col-start-1 col-span-4 sm:col-start-1 sm:col-span-4 sm:row-start-4 sm:row-span-1 flex justify-center sm:justify-start">
-          <div className="text-left" ref={refWork002}>
+        <div className="row-start-4 col-start-1 col-span-4 sm:col-start-1 sm:col-span-4 sm:row-start-4 sm:row-span-1 flex justify-center sm:justify-start" ref={refWork002}>
+          <div className="text-left">
             <div className="image_animation w-[22.375rem] flex-col sm:flex-row sm:w-[27.24vw] h-[16.125rem] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
               style={{
                 backgroundImage: `url(${work002})`,
@@ -304,3 +336,5 @@ const HomeContent = () => {
 };
 
 export default HomeContent;
+
+
