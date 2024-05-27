@@ -21,6 +21,18 @@
 }
 
 
+@layer utilities {
+    @variants responsive {
+    .bg-size-100 {
+        background-size: 100%;
+    }
+    .bg-size-145 {
+        background-size: 145%;
+    }
+    }
+}  
+
+
 @font-face {
     font-family: 'MyFont';
     src: local('MyFont'), url("./font/syne.ttf") format('truetype');

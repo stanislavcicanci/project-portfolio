@@ -15,7 +15,9 @@ const Hero = () => {
   useEffect(() => {
     // Detect touch device
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    setAllowHover(!isTouchDevice);
+    if(isTouchDevice) {
+      setAllowHover(false);
+    }
 
     const handleScroll = () => {
       if (allowHover) {
@@ -71,6 +73,8 @@ const Hero = () => {
       });
     });
   }, [scrollPosition, mousePosition, allowHover]);
+
+  
 
   useEffect(() => {
     const timer = setTimeout(() => {

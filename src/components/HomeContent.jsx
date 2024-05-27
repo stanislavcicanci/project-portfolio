@@ -17,6 +17,9 @@ const HomeContent = () => {
   const imageRef1 = useRef(null);
   const imageRef2 = useRef(null);
   const imageRef3 = useRef(null);
+  const refWork001 = useRef(null);
+  const refWork002 = useRef(null);
+  const refWork003 = useRef(null);
   const controls1 = useAnimation();
   const controls2 = useAnimation();
   const controls3 = useAnimation();
@@ -122,112 +125,7 @@ const HomeContent = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const [refWork001, inViewWork001] = useInView({
-    triggerOnce: true,
-    threshold: 0.01,
-  });
-
-  useEffect(() => {
-    if (inViewWork001) {
-      const initialScrollY = imageRef1.current.offsetTop - window.innerHeight;
-      const imageHeight = imageRef1.current.clientHeight;
-      const maxScroll = imageHeight * 0.15;
-  
-      const verifyScroll = () => {
-        const newScrollY = window.scrollY;
-        const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.07);
-        const backgroundPosition = `calc(1% - ${adjustedScroll}px)`;
-        imageRef1.current.style.backgroundPositionY = backgroundPosition;
-  
-        if (newScrollY >= initialScrollY + imageHeight) {
-          controls1.start({
-            rotate: 0,
-            transition: {
-              duration: 1,
-            }
-          });
-        } else {
-          controls1.start({ rotate: (newScrollY - initialScrollY) * 0.25 });
-        }
-      };
-  
-      window.onload = () => {
-        verifyScroll();
-      }
-
-      window.addEventListener("scroll", verifyScroll);
-      return () => window.removeEventListener("scroll", verifyScroll);
-    }
-  }, [controls1, inViewWork001]);
-
-  const [refWork002, inViewWork002] = useInView({
-    triggerOnce: true,
-    threshold: 0.01,
-  });
-
-  const [refWork003, inViewWork003] = useInView({
-    triggerOnce: true,
-    threshold: 0.01,
-  });
-
-  useEffect(() => {
-    if (inViewWork002) {
-      const initialScrollY = imageRef2.current.offsetTop - window.innerHeight;
-      const imageHeight = imageRef2.current.clientHeight;
-      const maxScroll = imageHeight * 0.2;
-  
-      const verifyScroll = () => {
-        const newScrollY = window.scrollY;
-        const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.07);
-        const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
-        imageRef2.current.style.backgroundPositionY = backgroundPosition;
-  
-        if (newScrollY >= initialScrollY + imageHeight) {
-          controls2.start({
-            rotate: 0,
-            transition: {
-              duration: 1,
-            }
-          });
-        } else {
-          controls2.start({ rotate: (newScrollY - initialScrollY) * 0.5 });
-        }
-      };
-  
-      window.addEventListener("scroll", verifyScroll);
-      return () => window.removeEventListener("scroll", verifyScroll);
-    }
-  }, [controls2, inViewWork002]);
-
-  useEffect(() => {
-    if (inViewWork003) {
-      const initialScrollY = imageRef3.current.offsetTop - window.innerHeight;
-      const imageHeight = imageRef3.current.clientHeight;
-      const maxScroll = imageHeight * 0.2;
-  
-      const verifyScroll = () => {
-        const newScrollY = window.scrollY;
-        const adjustedScroll = Math.min(maxScroll, (newScrollY - initialScrollY) * 0.07);
-        const backgroundPosition = `calc(20% - ${adjustedScroll}px)`;
-        imageRef3.current.style.backgroundPositionY = backgroundPosition;
-  
-        if (newScrollY >= initialScrollY + imageHeight) {
-          controls3.start({
-            rotate: 0,
-            transition: {
-              duration: 1,
-            }
-          });
-        } else {
-          controls3.start({ rotate: (newScrollY - initialScrollY) * 0.5 });
-        }
-      };
-  
-      window.addEventListener("scroll", verifyScroll);
-      return () => window.removeEventListener("scroll", verifyScroll);
-    }
-  }, [controls3, inViewWork003]);
-
+ 
   // Plus animatie
   React.useEffect(() => {
     const verifyScroll = () => {
@@ -288,15 +186,15 @@ const HomeContent = () => {
         </div>
         <div className="row-start-4 col-start-1 col-span-4 sm:col-start-1 sm:col-span-4 sm:row-start-4 sm:row-span-1 flex justify-center sm:justify-start" ref={refWork002}>
           <div className="text-left">
-            <div className="image_animation w-[22.375rem] flex-col sm:flex-row sm:w-[27.24vw] h-[16.125rem] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
-              style={{
-                backgroundImage: `url(${work002})`,
-                backgroundSize: 'auto 125%',
-                backgroundPositionX: 'center',
-                backgroundRepeat: 'no-repeat',
-              }}
-              ref={imageRef2}
-            ></div>
+          <div className="image_animation w-[22.375rem] flex-col sm:flex-row sm:w-[27.24vw] h-[16.125rem] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center bg-size-100 sm:bg-size-145"
+            style={{
+              backgroundImage: `url(${work002})`,
+              backgroundPositionX: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+            ref={imageRef2}
+          ></div>
+
             <h4 className='text-left mb-2'>SOLIX Moldova</h4>
             <div className="flex">
               <p className='ml-0'>#web design</p> <p>#branding</p>
@@ -305,10 +203,9 @@ const HomeContent = () => {
         </div>
         <div className="row-start-5 col-start-1 col-span-4 sm:col-start-5 sm:col-span-4 sm:row-start-4 sm:row-span-1 flex ">
           <div className="text-left" ref={refWork003}>
-            <div className="image_animation w-[27.24vw] h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
+            <div className="image_animation w-[22.375rem] flex-col sm:flex-row sm:w-[27.24vw] h-[16.125rem] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center bg-size-100 sm:bg-size-145"
               style={{
                 backgroundImage: `url(${work003})`,
-                backgroundSize: 'auto 125%',
                 backgroundPositionX: 'center',
                 backgroundRepeat: 'no-repeat',
               }}
