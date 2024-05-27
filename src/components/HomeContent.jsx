@@ -201,7 +201,7 @@ const HomeContent = () => {
             </div>
           </div>
         </div>
-        <div className="row-start-5 col-start-1 col-span-4 sm:col-start-5 sm:col-span-4 sm:row-start-4 sm:row-span-1 flex ">
+        <div className="row-start-5 col-start-1 col-span-4 sm:col-start-5 sm:col-span-4 sm:row-start-4 sm:row-span-1 flex justify-center sm:justify-start">
           <div className="text-left" ref={refWork003}>
             <div className="image_animation w-[22.375rem] flex-col sm:flex-row sm:w-[27.24vw] h-[16.125rem] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center bg-size-100 sm:bg-size-145"
               style={{
