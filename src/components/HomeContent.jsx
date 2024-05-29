@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { work001, work002, work003 } from '../index';
 import { AiOutlinePlus } from "react-icons/ai";
-import { useInView } from 'react-intersection-observer';
+// import { useInView } from 'react-intersection-observer';
 
 const Easing = (x) => {
   let clampX = Math.max(0, Math.min(x, 1));
@@ -20,9 +20,6 @@ const HomeContent = () => {
   const refWork001 = useRef(null);
   const refWork002 = useRef(null);
   const refWork003 = useRef(null);
-  const controls1 = useAnimation();
-  const controls2 = useAnimation();
-  const controls3 = useAnimation();
   const controls = useAnimation();
 
   const handleScroll = () => {

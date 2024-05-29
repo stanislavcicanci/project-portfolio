@@ -39,9 +39,9 @@ const Section3home = () => {
             ref={sectionRef}
             className="py-[4rem] sm:py-[9.50rem] grid grid-cols-4 sm:grid-cols-12 grid-rows-auto-fill gap-4 sm:gap-6 px-[1rem] sm:px-[7vw] text-white bg-[#121212] sm:gap-y-[6rem]"
         >
-            <div className="col-start-1 col-span-2 row-start-1 sm:col-start-2 sm:col-span-3 sm:row-start-1 flex justify-space-between items-start gap-[1rem]">
+            <div className="col-start-1 col-span-2 row-start-1 sm:col-start-2 sm:col-span-3 sm:row-start-1 flex justify-space-between items-start gap-[0.5rem] sm:gap-[1rem]">
                 <h3 className="w-auto text-white">ABOUT</h3>
-                <MdArrowOutward size={40} />
+                <MdArrowOutward size="2.0833vw" className="size-6 sm:size-[2.0833vw]" />
             </div>
             <motion.h3
                 className="text-white col-start-1 col-span-4 row-start-2 sm:col-start-4 sm:col-span-6 sm:row-start-1"
@@ -96,7 +96,7 @@ const Section3home = () => {
                 </motion.div>
                 <br />
             </div>
-            <h4 className="text-zinc-100 text-opacity-50 row-start-3 sm:row-start-2 sm:col-start-10 sm:col-span-2 flex ml-auto w-[11.25rem]">
+            <h4 className="text-zinc-100 text-opacity-50 row-start-3 col-span-2 sm:row-start-2 sm:col-start-10 sm:col-span-2 flex ml-auto w-[7.5rem] md:w-[11.25rem] sm:w-[7.5rem] justify-self-end items-end leading-[110%]">
                 *and even more to come
             </h4>
         </div>
