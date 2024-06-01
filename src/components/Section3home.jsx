@@ -34,10 +34,13 @@ const Section3home = () => {
         };
     }, [sectionRef]);
 
+
+    
+
     return (
         <div
             ref={sectionRef}
-            className="py-[4rem] sm:py-[9.50rem] grid grid-cols-4 sm:grid-cols-12 grid-rows-auto-fill gap-4 sm:gap-6 px-[1rem] sm:px-[7vw] text-white bg-[#121212] sm:gap-y-[6rem]"
+            className="py-[4rem] sm:py-[9.50rem] grid grid-cols-4 sm:grid-cols-12  gap-4 sm:gap-6 px-[1rem] sm:px-[7vw] text-white bg-[#121212] sm:gap-y-[6rem]"
         >
             <div className="col-start-1 col-span-2 row-start-1 sm:col-start-2 sm:col-span-3 sm:row-start-1 flex justify-space-between items-start gap-[0.5rem] sm:gap-[1rem]">
                 <h3 className="w-auto text-white">ABOUT</h3>
