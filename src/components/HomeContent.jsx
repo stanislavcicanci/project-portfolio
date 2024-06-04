@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { work001, work002, work003 } from '../index';
 import { AiOutlinePlus } from "react-icons/ai";
-// import { useInView } from 'react-intersection-observer';
 
 const Easing = (x) => {
   let clampX = Math.max(0, Math.min(x, 1));
@@ -22,38 +21,41 @@ const HomeContent = () => {
   const refWork003 = useRef(null);
   const controls = useAnimation();
 
-  const handleScroll = () => {
+  useEffect(() => {
+    const isTouchDevice = window.matchMedia("(hover: none)").matches;
+    setAllowHover(!isTouchDevice);
+  }, []);
+  const handleScroll = useCallback(() => {
+    if (!allowHover) return;
     const imageRefs = [imageRef1, imageRef2, imageRef3];
-  
+
     imageRefs.forEach((imageRef) => {
       if (imageRef.current) {
         const element = imageRef.current;
         const rect = element.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-  
+
         if (rect.top < windowHeight && rect.bottom > 0) {
           const scrollTop = window.scrollY;
           const elementTop = element.offsetTop;
           const elementHeight = element.clientHeight;
           const scrollAmount = (scrollTop - elementTop + windowHeight) / elementHeight;
-  
-          // Adjusting the factor to slow down the scroll effect
+
           const slowScrollAmount = scrollAmount * 0.5;
-  
+
           if (slowScrollAmount >= 0 && slowScrollAmount <= 1) {
             element.style.backgroundPositionY = `${slowScrollAmount * 100}%`;
           }
         }
       }
     });
-  };
-  
+  }, [allowHover]);
 
   useEffect(() => {
+    if (!allowHover) return;
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+  }, [allowHover, handleScroll]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,8 +73,10 @@ const HomeContent = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousemove', handleMouseMove);
+    if (allowHover) {
+      window.addEventListener('scroll', handleScroll);
+      document.addEventListener('mousemove', handleMouseMove);
+    }
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -81,8 +85,9 @@ const HomeContent = () => {
   }, [allowHover]);
 
   useEffect(() => {
-    const headings = document.querySelectorAll('h2');
+    if (!allowHover) return;
 
+    const headings = document.querySelectorAll('h2');
     headings.forEach((heading) => {
       heading.innerHTML = heading.textContent
         .split('')
@@ -92,7 +97,6 @@ const HomeContent = () => {
         .join('');
 
       const spans = heading.querySelectorAll('span');
-
       spans.forEach((span) => {
         const bounds = span.getBoundingClientRect();
         const spanX = bounds.left + bounds.width / 2;
@@ -109,43 +113,44 @@ const HomeContent = () => {
         span.style.fontVariationSettings = `'wght' ${weight}`;
       });
     });
-  }, [scrollY, mousePosition]);
+  }, [scrollY, mousePosition, allowHover]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setAllowHover(true);
-      setTimeout(() => {
-        setShowOverflow(true);
-      }, 0);
+      if (allowHover) {
+        setAllowHover(true);
+        setTimeout(() => {
+          setShowOverflow(true);
+        }, 0);
+      }
     }, 1500);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [allowHover]);
 
- 
-  // Plus animatie
-  React.useEffect(() => {
+
+  //animatia la plus
+  useEffect(() => {
     const verifyScroll = () => {
       const scrollY = window.scrollY;
       controls.start({ rotate: scrollY * 0.5 });
     };
-  
+
     window.addEventListener("scroll", verifyScroll);
     return () => window.removeEventListener("scroll", verifyScroll);
   }, [controls]);
-
   return (
     <div className='bg-white'>
       <div className='grid grid-cols-4 gap-x-[0.75rem] pt-[3rem] mx-[1rem] sm:grid-cols-12 grid-rows-auto-fill sm:gap-6 sm:mx-[7vw] sm:pt-12 sm:pb-36'>
         <div className={`over ${showOverflow ? '' : 'overflow-hidden'} col-start-1 col-span-3 sm:col-start-1 sm:row-start-1 sm:col-span-4 pb-[1rem] sm:pb-0`}>
           <motion.h2
-            className='text-[4rem] sm:text-[5.66vw] flex uppercase'
+            className='text-[3rem] sm:text-[5.66vw] flex uppercase'
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
               ease: 'easeInOut',
               duration: 0.5,
-              delay: 0.5,
+              delay: 0.7,
             }}
           >
             Recent
@@ -153,13 +158,13 @@ const HomeContent = () => {
         </div>
         <div className={`over ${showOverflow ? '' : 'overflow-hidden'} row-start-2 col-start-1 col-span-3 sm:col-start-1 sm:row-start-2 sm:col-span-8 pb-[1.5rem] sm:pb-0`}>
           <motion.h2
-            className='text-[4rem] sm:text-[5.66vw] flex uppercase'
+            className='text-[3rem] sm:text-[5.66vw] flex uppercase'
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{
               ease: 'easeInOut',
               duration: 0.5,
-              delay: 0.6,
+              delay: 0.8,
             }}
           >
             Work

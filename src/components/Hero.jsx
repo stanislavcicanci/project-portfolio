@@ -98,7 +98,7 @@ const Hero = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{
                 ease: 'easeInOut',
-                duration: 0.5,
+                duration: 0.8,
               }}
             >
               Digital
@@ -132,7 +132,7 @@ const Hero = () => {
               transition={{
                 ease: 'easeInOut',
                 duration: 0.5,
-                delay: 0.1,
+                delay: 0.4,
               }}
             >
               Creator
