@@ -125,6 +125,7 @@ function App() {
               ></motion.div>
             </>
           )}
+          <div class="notch"></div>
           <Navbar />
           <Hero />
           <HomeContent />
