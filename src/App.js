@@ -97,7 +97,7 @@ function App() {
   const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
   return (
-    <>
+    <div className='container'>
       <SmoothScroll className='bg-white'>
         <div>
           {!isTouchDevice && (
@@ -132,7 +132,7 @@ function App() {
           <Footer />
         </div>
       </SmoothScroll>
-    </>
+    </div>
   );
 }
 
