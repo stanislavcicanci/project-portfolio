@@ -49,8 +49,9 @@
     font-weight: 400;
 }
 
-
-
+body{
+    background-color: red;
+}
 
 *{
     font-family: 'MyFont';
@@ -60,14 +61,6 @@
     user-select: none;
 }
 
-.notch {
-    background-color: #FF5733; 
-    height: env(safe-area-inset-top);
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
 
 h1{
     font-variation-settings: 'wght' 400;
