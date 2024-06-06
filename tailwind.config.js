@@ -9,7 +9,10 @@ module.exports = {
         '100': '100%',
         '145': '145%',
       },
-    },
+      screens: {
+        standalone: { raw: "(display-mode: standalone)" },
+      },
+      },
   },
   plugins: [],
 }
