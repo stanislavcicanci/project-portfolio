@@ -100,7 +100,7 @@ const Footer = () => {
         const options = {
             root: null,
             rootMargin: "0px",
-            threshold: 0.1
+            threshold: 0.5
         };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {

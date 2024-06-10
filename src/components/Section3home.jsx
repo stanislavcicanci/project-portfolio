@@ -10,7 +10,7 @@ const Section3home = () => {
         const options = {
             root: null,
             rootMargin: "0px",
-            threshold: 0.25
+            threshold: 0.70
         };
 
         const observer = new IntersectionObserver((entries) => {
