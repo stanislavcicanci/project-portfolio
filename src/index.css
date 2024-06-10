@@ -49,6 +49,10 @@
     font-weight: 400;
 }
 
+a {
+    all: unset;
+}
+
 
 *{
     font-family: 'MyFont';

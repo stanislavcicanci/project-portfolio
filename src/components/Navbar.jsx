@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 
 
 const Navbar = () => {
@@ -23,11 +24,11 @@ return (
         <nav className='fixed mix-blend-difference top-0 left-0 right-0 h-[90px] text-white z-50'>
         <div className="flex justify-between leading-[18px] pr-[0.5rem] text-lg font-medium pl-[1rem] pt-[1.5rem] flex-wrap md:pl-[8rem] md:pt-[2.5rem] md:pr-[8rem]">
         <div className="logo">
-                CĂTĂLIN ȚURKANU.
+            <Link to="/"> CĂTĂLIN ȚURKANU.</Link>
             </div>
             <ul className="menu hidden list-none gap-[6rem] md:flex">
-                <li>PROJECTS</li>
-                <li>ABOUT</li>
+                <li><Link to="/projects">PROJECTS</Link></li>
+                <li><Link to="/about">ABOUT</Link></li>
             </ul>
             <div className="contact hidden md:block">
             CONTACTS
