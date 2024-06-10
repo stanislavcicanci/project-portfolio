@@ -3,16 +3,13 @@ import { motion, useAnimation } from 'framer-motion';
 import { work001, work002, work003 } from '../index';
 import { AiOutlinePlus } from "react-icons/ai";
 
-const Easing = (x) => {
-  let clampX = Math.max(0, Math.min(x, 1));
-  return Math.sin((clampX * Math.PI) / 2);
-};
+
 
 const HomeContent = () => {
   const [allowHover, setAllowHover] = useState(false);
   const [showOverflow, setShowOverflow] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [, setScrollY] = useState(0);
+  const [, setMousePosition] = useState({ x: 0, y: 0 });
   const imageRef1 = useRef(null);
   const imageRef2 = useRef(null);
   const imageRef3 = useRef(null);
@@ -84,36 +81,6 @@ const HomeContent = () => {
     };
   }, [allowHover]);
 
-  useEffect(() => {
-    if (!allowHover) return;
-
-    const headings = document.querySelectorAll('h2');
-    headings.forEach((heading) => {
-      heading.innerHTML = heading.textContent
-        .split('')
-        .map((letter) => {
-          return `<span>${letter}</span>`;
-        })
-        .join('');
-
-      const spans = heading.querySelectorAll('span');
-      spans.forEach((span) => {
-        const bounds = span.getBoundingClientRect();
-        const spanX = bounds.left + bounds.width / 2;
-        const spanY = bounds.top + bounds.height / 2;
-
-        const diffX = Math.abs(mousePosition.x - spanX);
-        const diffY = Math.abs(mousePosition.y - spanY);
-        const distance = Math.sqrt(diffX * diffX + diffY * diffY);
-        const normalizedDistance = distance / 200;
-
-        let weight = 800 - 400 * Easing(normalizedDistance);
-        weight = Math.max(400, Math.min(weight, 600));
-
-        span.style.fontVariationSettings = `'wght' ${weight}`;
-      });
-    });
-  }, [scrollY, mousePosition, allowHover]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

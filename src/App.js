@@ -97,7 +97,7 @@ function App() {
   const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
   return (
-    <div className='container'>
+    <div className=''>
       <SmoothScroll className='bg-white'>
         <div>
           {!isTouchDevice && (
