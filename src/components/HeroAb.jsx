@@ -101,7 +101,7 @@ return (
             className="image_animation w-[12.6875rem] h-[17.1875rem] sm:w-[11.77vw] sm:h-[100%] bg-cover bg-center flex justify-center items-center sm:col-start-7 sm:col-span-3 sm:row-start-1 row-span-2 z-50"
             style={{
                 backgroundImage: `url(${ heroab })`,
-               
+            
             }}
         ></div>
 
