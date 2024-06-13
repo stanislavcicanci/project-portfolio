@@ -7,7 +7,7 @@ import SmoothScroll from '../components/SmoothScroll';
 import Section3home from '../components/Section3home';
 import Footer from '../components/Footer';
 
-function App() {
+function Home() {
   const cursorSize = 5;
   const mouse = {
     x: useMotionValue(0),
@@ -136,4 +136,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
