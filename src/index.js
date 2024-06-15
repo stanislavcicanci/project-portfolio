@@ -7,9 +7,10 @@ import work002 from './images/work002.png';
 import work003 from './images/work003.png';
 import heroab from './images/heroab.png';
 import plus from './images/plus.svg';
+import section2ab from './images/section2ab.jpg';
 
 
-export { work001, work002, work003, plus, heroab };
+export { work001, work002, work003, plus, heroab, section2ab };
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

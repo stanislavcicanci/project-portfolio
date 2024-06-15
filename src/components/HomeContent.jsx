@@ -137,7 +137,6 @@ const HomeContent = () => {
             Work
           </motion.h2>
         </div>
-        
         <div className="row-start-3 col-start-1 col-span-4 sm:row-start-1  sm:row-span-3 sm:col-start-5 sm:col-span-8 mb-[1rem] sm:mb-[6rem]" ref={refWork001}>
           <div
             className="image_animation h-[16.125rem] sm:w-[55.78vw] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"

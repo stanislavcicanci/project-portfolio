@@ -47,7 +47,7 @@ const Section3home = () => {
                 <MdArrowOutward size="2.0833vw" className="size-6 sm:size-[2.0833vw]" />
             </div>
             <motion.h3
-                className="text-white col-start-1 col-span-4 row-start-2 sm:col-start-4 sm:col-span-6 sm:row-start-1"
+                className="text-white col-start-1 col-span-4 row-start-2 sm:col-start-4 sm:col-span-6 sm:row-start-1 text-justify"
                 initial={{ y: 50, opacity: 0 }}
                 animate={isVisible ? { y: 0, opacity: 1 } : {}}
                 transition={{ ease: 'easeInOut', duration: 0.5 }}

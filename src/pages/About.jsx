@@ -4,6 +4,8 @@ import HeroAb from '../components/HeroAb';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import SmoothScroll from '../components/SmoothScroll';
 import Footer from '../components/Footer';
+import Section2Ab from '../components/Section2Ab';
+import Section3Ab from '../components/Section3Ab';
 
 function About() {
 const cursorSize = 5;
@@ -41,56 +43,8 @@ useEffect(() => {
     }
 }, [mouse.x, mouse.y])
 
-const lerp = (start, end, t) => {
-    return start * (1 - t) + end * t;
-};
 
-useEffect(() => {
-    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
-    
-    if (!isTouchDevice) {
-    const cursor = document.querySelector('.cursor');
-    const images = document.querySelectorAll('.image_animation');
-    
-    const handleMouseEnter = (e) => {
-        const { target } = e;
-        const { left, top, width, height } = target.getBoundingClientRect();
-    
-        const imageCenterX = left + width / 2 - cursorSize / 2;
-        const imageCenterY = top + height / 2 - cursorSize / 2;
-    
-        const newX = lerp(mouse.x.get(), imageCenterX, 0.2); 
-        const newY = lerp(mouse.y.get(), imageCenterY, 0.2);
-    
-        mouse.x.set(newX);
-        mouse.y.set(newY);
-    
-        cursor.style.pointerEvents = 'none';
-        cursor.classList.add('cursor_a');
-    
-        setTimeout(() => {
-        cursor.textContent = 'EXPLORE PROJECT';
-        }, 202);
-    };
-    
-    const handleMouseLeave = () => {
-        cursor.textContent = '';
-        cursor.classList.remove('cursor_a');
-    };
-    
-    images.forEach((image) => {
-        image.addEventListener('mouseenter', handleMouseEnter);
-        image.addEventListener('mouseleave', handleMouseLeave);
-    });
-    
-    return () => {
-        images.forEach((image) => {
-        image.removeEventListener('mouseenter', handleMouseEnter);
-        image.removeEventListener('mouseleave', handleMouseLeave);
-        });
-    };
-    }
-}, [mouse.x, mouse.y]);
+
 
 const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
@@ -125,6 +79,8 @@ return (
         )}
         <Navbar />
         <HeroAb />
+        <Section2Ab />
+        <Section3Ab />
         <Footer />
         </div>
     </SmoothScroll>
