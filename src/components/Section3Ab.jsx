@@ -153,7 +153,7 @@ return (
                 </motion.div>
                 <br />
             </div>
-            <h4 className="text-zinc-100 text-opacity-50 row-start-6 col-span-2 sm:row-start-6 sm:col-start-10 sm:col-span-2 flex ml-auto w-[251px] md:w-[11.25rem] sm:w-[7.5rem] justify-top items-end mb-auto leading-[110%] mt-[6rem]">
+            <h4 className="text-zinc-100 text-opacity-50 row-start-6 col-span-2 sm:row-start-6 sm:col-start-10 sm:col-span-2 flex ml-auto w-[251px] md:w-[11.25rem] sm:w-[251px] justify-top items-end mb-auto leading-[110%] mt-[6rem]">
             *always open to study
             many others
             </h4>
