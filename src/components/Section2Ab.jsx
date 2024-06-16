@@ -5,7 +5,7 @@ import { MdArrowOutward } from "react-icons/md";
 const Section2Ab = () => {
 return (
     <div className='bg-white '>
-    <div className="grid w-[100vw] bg-white sm:w-[100%] sm:pt-[3rem] grid-cols-4 mt-[10vw] gap-x-[1.5rem] sm:mt-0 md:grid-cols-12  sm:gap-x-[1.5rem]  mx-[1rem]  px-[1rem] lg:px-[9.5rem] sm:mb-[9rem] mb-[4rem]">
+    <div className="grid w-[100vw] bg-white sm:w-[100%] sm:pt-[3rem] grid-cols-4 mt-[10vw] gap-x-[1.5rem] sm:mt-0 md:grid-cols-12  sm:gap-x-[1.5rem]  px-[1rem] lg:px-[9.5rem] sm:mb-[9rem] mb-[4rem]">
 
         <h2 className='w-auto sm:col-start-1 sm:col-span-5 col-start-1 col-span-2'>
         <span className="mobile-only">WHO</span>

@@ -92,12 +92,20 @@ return (
         </div>
         </div>
 
-        <div className="text_homeh4 text-[1rem] mt-[1.5rem] col-start-1 col-span-4 row-start-3 md:row-start-2 md:col-start-2 md:col-span-5 flex justify-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
+        <motion.div 
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+            ease: 'easeInOut',
+            duration: 0.5,
+            delay: 0.4,
+        }}
+        className="text_homeh4 text-[1rem] mt-[1.5rem] col-start-1 col-span-4 row-start-3 md:row-start-2 md:col-start-2 md:col-span-5 flex justify-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
         <h4 className="text-justify">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
         Aenean dignissim felis nunc, ac volutpat lorem scelerisque a. Cras ac nulla.
         </h4>
-        </div>
+        </motion.div>
 
         <div
             className="image_animation w-[12.6875rem] h-[17.19rem] sm:w-[11.77vw] sm:h-[100%]  bg-cover bg-center flex justify-center items-center col-start-1 sm:col-start-7 sm:col-span-3 sm:ml-auto sm:mr-auto col-span-4  row-start-1 absolute ml-[17vw] sm:relative  sm:row-start-1 row-span-2 z-[0]"
