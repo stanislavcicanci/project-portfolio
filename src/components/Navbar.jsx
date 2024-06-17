@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
-  // scroll opacity
+  const location = useLocation();
   const [hrOpacity, setHrOpacity] = useState(0.5);
+  const [isOpen, setIsOpen] = useState(false);
+  const menuContainerRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,36 +21,64 @@ const Navbar = () => {
     };
   }, []);
 
-  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    if (isOpen) {
-      document.body.style.overflow = 'auto';
-    } else {
-      document.body.style.overflow = 'hidden';
+    if (menuContainerRef.current) {
+      menuContainerRef.current.style.overflow = isOpen ? 'auto' : 'hidden';
     }
   };
 
-  const handleMenuItemClick = (e) => {
-    e.stopPropagation(); // Împiedică propagarea evenimentului
-    setIsOpen(false); // Închide meniul mobil
+  const handleMenuItemClick = (e, to) => {
+    e.stopPropagation();
+    if (location.pathname !== to) {
+      setIsOpen(false);
+    }
+  };
+
+  const handleLinkClick = (e, to) => {
+    if (location.pathname === to) {
+      e.preventDefault();
+    }
   };
 
   return (
-    <div>
+    <div ref={menuContainerRef} style={{ overflow: isOpen ? 'hidden' : 'auto' }}>
       <nav className='fixed mix-blend-difference top-0 left-0 right-0 h-[90px] text-white z-50'>
         <div className="flex justify-between leading-[18px] pr-[0.5rem] text-lg font-medium pl-[1rem] pt-[1.5rem] flex-wrap md:pl-[8rem] md:pt-[2.5rem] md:pr-[8rem]">
           <div className="logo">
-            <Link to="/"> CĂTĂLIN ȚURKANU.</Link>
+            <Link to="/" onClick={(e) => handleLinkClick(e, '/')}>
+              CĂTĂLIN ȚURKANU.
+            </Link>
           </div>
           <ul className="menu hidden list-none gap-[6rem] md:flex">
-            <li><Link to="/projects">PROJECTS</Link></li>
-            <li><Link to="/about">ABOUT</Link></li>
+            <li>
+              <Link
+                to="/projects"
+                onClick={(e) => {
+                  handleMenuItemClick(e, '/projects');
+                  handleLinkClick(e, '/projects');
+                }}
+              >
+                PROJECTS
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                onClick={(e) => {
+                  handleMenuItemClick(e, '/about');
+                  handleLinkClick(e, '/about');
+                }}
+              >
+                ABOUT
+              </Link>
+            </li>
           </ul>
-          <div className="contact hidden md:block">
-            CONTACTS
-          </div>
+          <div className="contact hidden md:block">CONTACTS</div>
           <div className="block md:hidden">
             <div className="burgers">
               <label className="burger burger4" htmlFor="burger4">
@@ -67,6 +97,7 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            key={location.pathname}
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
@@ -76,13 +107,46 @@ const Navbar = () => {
             <div className="bg-white p-6 rounded-lg">
               <ul className="flex flex-col space-y-4">
                 <li>
-                  <Link to="/projects" onClick={handleMenuItemClick}>PROJECTS</Link>
+                  <Link
+                    to="/projects"
+                    onClick={(e) => {
+                      handleMenuItemClick(e, '/projects');
+                      handleLinkClick(e, '/projects');
+                    }}
+                    style={{
+                      pointerEvents: location.pathname === '/projects' ? 'none' : 'auto',
+                      opacity: location.pathname === '/projects' ? 0.5 : 1,
+                    }}
+                  >
+                    PROJECTS
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/about" onClick={handleMenuItemClick}>ABOUT</Link>
+                  <Link
+                    to="/about"
+                    onClick={(e) => {
+                      handleMenuItemClick(e, '/about');
+                      handleLinkClick(e, '/about');
+                    }}
+                    style={{
+                      pointerEvents: location.pathname === '/about' ? 'none' : 'auto',
+                      opacity: location.pathname === '/about' ? 0.5 : 1,
+                    }}
+                  >
+                    ABOUT
+                  </Link>
                 </li>
                 <li>
-                  <Link to="" onClick={handleMenuItemClick}>CONTACTS</Link>
+                  <Link
+                    to=""
+                    onClick={(e) => handleMenuItemClick(e, '')}
+                    style={{
+                      pointerEvents: location.pathname === '' ? 'none' : 'auto',
+                      opacity: location.pathname === '' ? 0.5 : 1,
+                    }}
+                  >
+                    CONTACTS
+                  </Link>
                 </li>
               </ul>
             </div>
