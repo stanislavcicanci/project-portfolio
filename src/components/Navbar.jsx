@@ -30,6 +30,11 @@ const Navbar = () => {
     }
   };
 
+  const handleMenuItemClick = (e) => {
+    e.stopPropagation(); // Împiedică propagarea evenimentului
+    setIsOpen(false); // Închide meniul mobil
+  };
+
   return (
     <div>
       <nav className='fixed mix-blend-difference top-0 left-0 right-0 h-[90px] text-white z-50'>
@@ -71,13 +76,13 @@ const Navbar = () => {
             <div className="bg-white p-6 rounded-lg">
               <ul className="flex flex-col space-y-4">
                 <li>
-                  <Link to="/projects">PROJECTS</Link>
+                  <Link to="/projects" onClick={handleMenuItemClick}>PROJECTS</Link>
                 </li>
                 <li>
-                  <Link to="/about">ABOUT</Link>
+                  <Link to="/about" onClick={handleMenuItemClick}>ABOUT</Link>
                 </li>
                 <li>
-                  <Link to="">CONTACTS</Link>
+                  <Link to="" onClick={handleMenuItemClick}>CONTACTS</Link>
                 </li>
               </ul>
             </div>
