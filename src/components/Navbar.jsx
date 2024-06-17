@@ -41,7 +41,7 @@ const Navbar = () => {
 
   const handleLinkClick = (e, to) => {
     if (location.pathname === to) {
-      e.preventDefault();
+      window.scrollTo(0, 0);
     }
   };
 
