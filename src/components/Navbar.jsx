@@ -3,10 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
-  const location = useLocation();
   const [hrOpacity, setHrOpacity] = useState(0.5);
   const [isOpen, setIsOpen] = useState(false);
   const menuContainerRef = useRef(null);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +46,9 @@ const Navbar = () => {
 
   const handleLinkClick = (e, to) => {
     if (location.pathname === to) {
-      window.scrollTo(0, 0);
+      e.preventDefault(); // Previne navigarea la același URL
+      window.scrollTo(0, 0); // Navighează la începutul paginii
+      window.location.reload(); // Reîncarci pagina curentă
     }
   };
 
