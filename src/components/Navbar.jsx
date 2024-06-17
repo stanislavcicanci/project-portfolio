@@ -79,11 +79,13 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="contact hidden md:block">CONTACTS</div>
-          <div className="block md:hidden">
+          <div className="block md:hidden"
+          onClick={toggleMenu}
+          >
             <div className="burgers">
               <label className="burger burger4" htmlFor="burger4">
                 <input className="hiddenn cursor-pointer" id="burger4" type="checkbox" />
-                <span onClick={toggleMenu}></span>
+                <span ></span>
               </label>
             </div>
           </div>
