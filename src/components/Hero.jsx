@@ -120,7 +120,7 @@ const Hero = () => {
 
         <div className="text_homeh4 text-[1rem] col-start-1 col-span-3 md:col-start-2 md:col-span-3 flex justify-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
           <h4 className="col-start-2 text-left">©2024</h4>
-          <h4 className="text-left">ROFFESIONAL CAREER</h4>
+          <h4 className="text-left">PROFFESIONAL CAREER</h4>
           <h4 className="col-start-2 text-left">AGING LIKE FINE WINE</h4>
         </div>
         <div className="col-start-1 col-span-4 row-start-2 md:col-start-5 md:col-span-7 flex items-end justify-end mt-0">

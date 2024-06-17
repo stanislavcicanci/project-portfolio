@@ -186,11 +186,11 @@ return (
             </div>
         </div>
         <div className="grid gap-y-[0.5rem] px-[1rem] grid-cols-4 sm:flex justify-around pb-[3rem] sm:pb-[2.5rem] leading-[18px] text-lg font-medium">
-            <p className='text-neutral-900 col-start-1'>LINKEDIN</p>
-            <p className='text-neutral-900 row-start-2'>BEHANCE</p>
-            <p className='text-neutral-900 row-start-3'>INSTAGRAM</p>
-            <p className='text-neutral-900 col-start-4 text-right sm:text-left'>FACEBOOK</p>
-            <p className='text-neutral-900 col-start-4 text-right sm:text-left'>TELEGRAM</p>
+            <p className='text-neutral-900 col-start-1'><a href="https://www.linkedin.com/in/turkanu">LINKEDIN</a></p>
+            <p className='text-neutral-900 row-start-2'><a href="https://www.behance.net/turkanu">BEHANCE</a></p>
+            <p className='text-neutral-900 row-start-3'><a href="https://www.instagram.com/_turkanu">INSTAGRAM</a></p>
+            <p className='text-neutral-900 col-start-4 text-right sm:text-left'><a href="https://www.facebook.com/turkanucatalin">FACEBOOK</a></p>
+            <p className='text-neutral-900 col-start-4 text-right sm:text-left'><a href="https://t.me/turkanu_c">TELEGRAM</a></p>
         </div>
     </div>
 );

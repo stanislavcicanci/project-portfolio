@@ -51,6 +51,7 @@
 
 a {
     all: unset;
+    cursor: pointer;
 }
 
 
@@ -191,9 +192,9 @@ p{
     width: 3rem;
     height: 3rem;
     border-radius: 3px;
-    box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.3);
     background-color: var(--color-white);
     margin-top: -15px;
+    z-index: 9999;
 }
 
 .burger span {
