@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import {  useAnimation } from 'framer-motion';
-import { work001, work002, work003 } from '../index';
+import { work001, work002, work003, work004, work005 } from '../index';
 
 
 
@@ -178,15 +178,17 @@ const HeroPr = () => {
 
         <div className="row-start-6 col-start-1 col-span-4 sm:col-start-9 sm:col-span-4 sm:row-start-5 sm:row-span-1 flex justify-center sm:justify-start sm:mt-[4.5rem] mb-6 sm:mb-0">
           <div className="text-left" ref={refWork004}>
-            <div className="image_animation w-[91.7vw] flex-col sm:flex-row sm:w-[27.24vw] h-[16.125rem] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center bg-size-100 sm:bg-size-145"
+            <a className="image_animation w-[91.7vw] flex-col sm:flex-row sm:w-[27.24vw] h-[16.125rem] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center bg-size-100 sm:bg-size-145"
+              href='https://dictionar-urban.vercel.app/'
               style={{
-                backgroundImage: `url(${work003})`,
+                backgroundImage: `url(${work004})`,
                 backgroundPositionX: 'center',
                 backgroundRepeat: 'no-repeat',
+                backgroundSize: '100%',
               }}
               ref={imageRef4}
-            ></div>
-            <h4 className='text-left mb-2'>ALUTRADE</h4>
+            ></a>
+            <h4 className='text-left mb-2'>PLAYGROUND - DICȚIONAR URBAN</h4>
             <div className="flex">
               <p className='ml-0'>#web design</p> <p className='ml-1 sm:ml-2'>#ui/ux</p> <p className='ml-1 sm:ml-2'>#branding</p>
             </div>
@@ -196,17 +198,18 @@ const HeroPr = () => {
 
 
         <div className="row-start-7 col-start-1 col-span-4 sm:row-start-6  sm:row-span-3 sm:col-start-1 sm:col-span-8 mb-[1rem] sm:mb-[6rem] sm:mt-[3.5rem] mt-0" ref={refWork005}>
-          <div
+          <a
+          href='https://portfolio-omega-eight-26.vercel.app/'
             className="image_animation h-[16.125rem] sm:w-[55.78vw] sm:h-[40vw] mb-4 bg-cover bg-center flex justify-center items-center"
             style={{
-              backgroundImage: `url(${work001})`,
-              backgroundSize: '110%',
+              backgroundImage: `url(${work005})`,
+              backgroundSize: '130%',
               backgroundPositionX: 'center',
               backgroundRepeat: 'no-repeat',
             }}
             ref={imageRef5}
-          ></div>
-          <h4 className='w-auto text-left mb-[.5rem] font-medium'>ViZBL | Get to know your friends</h4>
+          ></a>
+          <h4 className='w-auto text-left mb-[.5rem] font-medium'>Playground - 3D models</h4>
           <div className="tag w-[15.75rem] sm:w-[55.78vw] flex justify-start font-medium flex-wrap">
             <p className='ml-0'>#web design</p> <p className='ml-1 sm:ml-2'>#ui/ux</p> <p className='ml-1 sm:ml-2'>#3d motion</p> <p className='ml-1 sm:ml-2'>#branding</p> <p className='sm:ml-2'>#creative direction</p>
           </div>

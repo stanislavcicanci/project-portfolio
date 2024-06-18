@@ -149,7 +149,7 @@ const Footer = () => {
     };
 
 return (
-    <div ref={sectionRef1} className='bg-white'>
+    <div ref={sectionRef1} className='bg-white' id='footer'>
         <div className="grid grid-cols-4 mx-[1rem] sm:grid-cols-12 sm:grid-rows-2 sm:gap-6 sm:mx-[7vw]">
             <div className={`over ${isVisible && isOverflowing ? '' : 'overflow-hidden'} col-start-1 col-span-4 mt-[4rem] h-[3.75rem] sm:min-h-0 sm:h-auto sm:col-start-2 sm:col-span-7 sm:mt-[6rem] mb-4 sm:mb-0`}>
                 <motion.div

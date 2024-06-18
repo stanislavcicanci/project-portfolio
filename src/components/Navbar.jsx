@@ -46,10 +46,36 @@ const Navbar = () => {
 
   const handleLinkClick = (e, to) => {
     if (location.pathname === to) {
-      e.preventDefault(); // Previne navigarea la același URL
-      window.scrollTo(0, 0); // Navighează la începutul paginii
-      window.location.reload(); // Reîncarci pagina curentă
+      e.preventDefault();
+      window.scrollTo(0, 0);
+      window.location.reload();
     }
+  };
+
+  const scrollToFooter = () => {
+    const footerElement = document.getElementById('footer');
+    if (footerElement) {
+      footerElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const menuItemsDesktop = [
+    { name: 'PROJECTS', path: '/projects' },
+    { name: 'ABOUT', path: '/about' },
+  ];
+
+  const menuItemsMobile = [
+    { name: 'HOME', path: '/' },
+    ...menuItemsDesktop,
+  ];
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2 },
+    }),
   };
 
   return (
@@ -62,44 +88,26 @@ const Navbar = () => {
             </Link>
           </div>
           <ul className="menu hidden list-none gap-[6rem] md:flex">
-            <li>
-              <Link
-                to="/projects"
-                onClick={(e) => {
-                  handleMenuItemClick(e, '/projects');
-                  handleLinkClick(e, '/projects');
-                }}
-              >
-                PROJECTS
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                onClick={(e) => {
-                  handleMenuItemClick(e, '/about');
-                  handleLinkClick(e, '/about');
-                }}
-              >
-                ABOUT
-              </Link>
-            </li>
+            {menuItemsDesktop.map((item, index) => (
+              <li key={index}>
+                <Link
+                  to={item.path}
+                  onClick={(e) => {
+                    handleMenuItemClick(e, item.path);
+                    handleLinkClick(e, item.path);
+                  }}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
           </ul>
-          <div className="contact hidden md:block">CONTACTS</div>
-          <div className="block md:hidden"
-         
-          >
-            <div className="burgers"
-           
-            >
-              <label className="burger burger4" htmlFor="burger4"
-               >
-                <input className="hiddenn cursor-pointer" id="burger4" type="checkbox" 
-                 onClick={toggleMenu}
-                />
-                <span 
-                
-                ></span>
+          <div className="contact hidden md:block" onClick={scrollToFooter}>CONTACTS</div>
+          <div className="block md:hidden">
+            <div className="burgers">
+              <label className="burger burger4" htmlFor="burger4">
+                <input className="hiddenn cursor-pointer" id="burger4" type="checkbox" onClick={toggleMenu} />
+                <span></span>
               </label>
             </div>
           </div>
@@ -120,50 +128,50 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="fixed top-[65px] left-0 right-0 bottom-0 bg-black bg-opacity-75 z-50 flex justify-center items-center"
           >
-            <div className="bg-white p-6 rounded-lg">
-              <ul className="flex flex-col space-y-4">
-                <li>
-                  <Link
-                    to="/projects"
-                    onClick={(e) => {
-                      handleMenuItemClick(e, '/projects');
-                      handleLinkClick(e, '/projects');
-                    }}
-                    style={{
-                      pointerEvents: location.pathname === '/projects' ? 'none' : 'auto',
-                      opacity: location.pathname === '/projects' ? 0.5 : 1,
-                    }}
+            <div className="bg-white p-8 rounded-lg">
+              <ul className="flex flex-col space-y-4 text-2xl">
+                {menuItemsMobile.map((item, index) => (
+                  <motion.li
+                    key={index}
+                    custom={index}
+                    initial="hidden"
+                    animate="visible"
+                    variants={itemVariants}
                   >
-                    PROJECTS
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/about"
+                    <Link
+                      to={item.path}
+                      onClick={(e) => {
+                        handleMenuItemClick(e, item.path);
+                        handleLinkClick(e, item.path);
+                      }}
+                      style={{
+                        pointerEvents: location.pathname === item.path ? 'none' : 'auto',
+                        opacity: location.pathname === item.path ? 0.5 : 1,
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.li>
+                ))}
+                <motion.li
+                  custom={menuItemsMobile.length}
+                  initial="hidden"
+                  animate="visible"
+                  variants={itemVariants}
+                >
+                  <div
                     onClick={(e) => {
-                      handleMenuItemClick(e, '/about');
-                      handleLinkClick(e, '/about');
+                      handleMenuItemClick(e, '');
+                      scrollToFooter();
                     }}
                     style={{
-                      pointerEvents: location.pathname === '/about' ? 'none' : 'auto',
-                      opacity: location.pathname === '/about' ? 0.5 : 1,
-                    }}
-                  >
-                    ABOUT
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to=""
-                    onClick={(e) => handleMenuItemClick(e, '')}
-                    style={{
-                      pointerEvents: location.pathname === '' ? 'none' : 'auto',
+                      cursor: 'pointer',
                       opacity: location.pathname === '' ? 0.5 : 1,
                     }}
                   >
                     CONTACTS
-                  </Link>
-                </li>
+                  </div>
+                </motion.li>
               </ul>
             </div>
           </motion.div>
