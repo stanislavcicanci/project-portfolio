@@ -60,6 +60,7 @@ const Navbar = () => {
   };
 
   const menuItemsDesktop = [
+    { name: 'HOME', path: '/' },
     { name: 'PROJECTS', path: '/projects' },
     { name: 'ABOUT', path: '/about' },
   ];
