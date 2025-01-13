@@ -52,7 +52,7 @@ return (
         WEB DESIGN | 3D MOTION | PM 
         </h4>
         <h4 className='row-start-5 col-span-4 sm:row-start-3 sm:col-start-7 sm:col-span-5 text-white text-left sm:mt-[1.5rem] sm:row-span-2'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim felis nunc, ac volutpat lorem scelerisque a. Cras ac nulla non justo ultrices gravida.
+        This placeholder text is intended to serve as a visual guide, offering an example of how the final content might look once it is fully developed and integrated into the design. It allows for assessing the overall layout, spacing, and structure without relying on the actual finalized content.
         </h4>
 
 
@@ -67,7 +67,7 @@ return (
             JR. INTERIOR DESIGN
             </h4>
             <h4 className='row-start-9 col-span-4 mb-12 sm:mb-0 sm:row-start-6 sm:col-start-7 sm:col-span-5 text-white text-left sm:mt-[1.5rem] sm:row-span-2'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim felis nunc, ac volutpat lorem scelerisque a. Cras ac nulla non justo ultrices gravida.
+           This placeholder text is intended to serve as a visual guide, offering an example of how the final content might look once it is fully developed and integrated into the design. It allows for assessing the overall layout, spacing, and structure without relying on the actual finalized content.
             </h4>
     </div>
     <hr  className='text-[#F1F1F1] w-[100vw] h-[1px] opacity-[50%]'/>
