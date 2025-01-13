@@ -102,8 +102,7 @@ return (
         }}
         className="text_homeh4 text-[1rem] mt-[1.5rem] col-start-1 col-span-4 row-start-3 md:row-start-2 md:col-start-2 md:col-span-5 flex justify-end flex-col md:text-[1.5vw] lg:text-[1.25vw]">
         <h4 className="text-justify">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Aenean dignissim felis nunc, ac volutpat lorem scelerisque a. Cras ac nulla.
+        This placeholder text is intended to serve as a visual guide, offering an example of how the final content might look once it is fully developed and integrated into the design. It allows for assessing the overall layout, spacing, and structure without relying on the actual finalized content.
         </h4>
         </motion.div>
 
