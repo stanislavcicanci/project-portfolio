@@ -16,7 +16,7 @@ return (
         <h2 className='w-auto sm:col-start-11 flex items-end justify-end col-start-3 col-span-2 mobile-only text-right'>AM I</h2>
         
         <h3 className='sm:row-start-2 sm:col-span-5 sm:col-start-1 sm:mt-[6rem] mt-[3rem] row-start-3 col-span-4'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim felis nunc, ac volutpat lorem scelerisque a. Cras ac nulla non justo ultrices gravida.
+        This placeholder text is intended to serve as a visual guide, offering an example of how the final content might look once it is fully developed and integrated into the design. It allows for assessing the overall layout, spacing, and structure without relying on the actual finalized content.
         <br /> <br />
         Aenean dignissim felis nunc, ac volutpat lorem scelerisque a. Cras ac nulla non justo ultrices gravida.
         </h3>
