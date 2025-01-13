@@ -52,7 +52,7 @@ const Section3home = () => {
                 animate={isVisible ? { y: 0, opacity: 1 } : {}}
                 transition={{ ease: 'easeInOut', duration: 0.5 }}
             >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dignissim felis nunc, ac volutpat lorem scelerisque a. Cras ac nulla non justo ultrices gravida. Cras a eros fringilla tellus commodo semper a sed nisl.
+               This placeholder text is intended to serve as a visual guide, offering an example of how the final content might look once it is fully developed and integrated into the design. It allows for assessing the overall layout, spacing, and structure without relying on the actual finalized content.
             </motion.h3>
             <div className="col-start-1 col-span-2 row-start-3 mt-[2rem] sm:mt-0 sm:col-start-2 sm:col-span-2 sm:row-start-2 flex justify-space-between items-start gap-[1rem]">
                 <h3 className="w-auto text-white">SKILLS & SERVICES</h3>
